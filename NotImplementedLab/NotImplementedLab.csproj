@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,11 +56,31 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\FieldPresenterButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Modals\MessageModalDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PopupNotification.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\ShowcaseDisplay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\ShowcaseItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\FieldSelectorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ShowcasePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -71,6 +92,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controls\FieldPresenterButton.xaml.cs">
+      <DependentUpon>FieldPresenterButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Modals\MessageModalDialog.xaml.cs">
+      <DependentUpon>MessageModalDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PopupNotification.xaml.cs">
+      <DependentUpon>PopupNotification.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ShowcaseDisplay.xaml.cs">
       <DependentUpon>ShowcaseDisplay.xaml</DependentUpon>
     </Compile>
@@ -79,6 +109,13 @@
     </Compile>
     <Compile Include="Data\ShowcaseDisplayPathData.cs" />
     <Compile Include="Data\ShowcaseListItem.cs" />
+    <Compile Include="Pages\FieldSelectorPage.xaml.cs">
+      <DependentUpon>FieldSelectorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ShowcasePage.xaml.cs">
+      <DependentUpon>ShowcasePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\_Page.cs" />
     <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -111,5 +148,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\Fields\template.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

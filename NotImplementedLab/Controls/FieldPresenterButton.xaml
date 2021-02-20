@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="NotImplementedLab.Controls.FieldPresenterButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NotImplementedLab.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="150" d:DesignWidth="600" Cursor="Hand">
+    <Viewbox>
+        <Border CornerRadius="20" Width="600" Height="150">
+            <Border.Background>
+                <ImageBrush ImageSource="pack://application:,,,/NotImplementedLab;component/Images/Fields/template.jpg"/>
+            </Border.Background>
+            <Grid>
+                <TextBlock Name="FieldNameControl"
+                       Foreground="White"                       
+                       FontFamily="Candara"
+                       FontSize="50"                       
+                       Margin="15 70 0 0"
+                       Text="[Template]"/>
+            </Grid>
+        </Border>
+    </Viewbox>
+</UserControl>

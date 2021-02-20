@@ -3,41 +3,62 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:NotImplementedLab"
-        xmlns:controls="clr-namespace:NotImplementedLab.Controls"
+        xmlns:local="clr-namespace:NotImplementedLab"        
+        xmlns:modals="clr-namespace:NotImplementedLab.Controls.Modals"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1000">
+        Title="Not Implemented Lab" Height="600" Width="1000"
+        MinWidth="950" MinHeight="500">
     <Grid>
-        <!--UniformGrid Columns="2" Margin="250 5">
-            <controls:ShowcaseItem Width="150" Height="150" Caption="Matematică"/>
-            <controls:ShowcaseItem Width="150" Height="150" Caption="Fizică"/>
-            <controls:ShowcaseItem Width="150" Height="150" Caption="Matematică"/>
-            <controls:ShowcaseItem Width="150" Height="150" Caption="Fizică"/>
-            <controls:ShowcaseItem Width="150" Height="150" Caption="Fizică"/>
-            <controls:ShowcaseItem Width="150" Height="150" Caption="Fizică"/>
-        </!-->
-        <ListView ScrollViewer.VerticalScrollBarVisibility="Auto" Name="List" BorderThickness="0">
-            <ListView.Resources>
-                <Style TargetType="ListViewItem">
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type ListViewItem}">
-                                <ContentPresenter/>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </ListView.Resources>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <controls:ShowcaseItem Width="150" Height="150" Caption="{Binding Caption}" Margin="2"/>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel/>
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
-        </ListView>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="8*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <DockPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.ZIndex="0"  Name="MainContent">
+                <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Navigated="MainFrame_Navigated"/>
+            </DockPanel>
+            <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.ZIndex="0" Name="GlobalBlurMask" Visibility="Collapsed">
+                <Border Background="#f5f5f5">
+                    <Border Opacity="0.7" >
+                        <Border.Effect>
+                            <BlurEffect Radius="10"/>
+                        </Border.Effect>
+                        <Border.Background>
+                            <VisualBrush  Visual="{Binding ElementName=MainContent}" Stretch="None" ViewboxUnits="Absolute" AlignmentX="Left" AlignmentY="Top" />
+                        </Border.Background>
+                    </Border>
+                </Border>
+                <Grid>
+                    <Border Grid.Row="1" Grid.Column="1" 
+                            Width="Auto" Height="Auto"
+                            VerticalAlignment="Center" HorizontalAlignment="Center" 
+                            MaxWidth="400" MaxHeight="600" 
+                            CornerRadius="3" Background="White" BorderThickness="1" BorderBrush="Black">
+                        <Grid>
+                            <modals:MessageModalDialog x:Name="wMessageModal" Background="Transparent" Visibility="Collapsed"></modals:MessageModalDialog>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="1" Grid.ZIndex="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="2"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Name="PopupPanel" Orientation="Vertical" VerticalAlignment="Bottom">
+                </StackPanel>
+            </Grid>
+        </Grid>
+        <StackPanel Grid.Row="1" Background="#10000000">
+
+        </StackPanel>
     </Grid>
 </Window>
