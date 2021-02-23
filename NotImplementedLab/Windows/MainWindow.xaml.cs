@@ -29,6 +29,7 @@ namespace NotImplementedLab.Windows
             InitializeComponent();
             FieldSelectorPage = new FieldSelectorPage { Owner = this };
             ShowcasePage = new ShowcasePage { Owner = this };
+            ActivityPage = new ActivityPage { Owner = this };
             MainFrame.NavigationService.Navigate(FieldSelectorPage);
 
             wMessageModal.Owner = this;
@@ -42,7 +43,8 @@ namespace NotImplementedLab.Windows
 
 
         public _Page FieldSelectorPage;
-        public _Page ShowcasePage;        
+        public _Page ShowcasePage;
+        public _Page ActivityPage;
 
         public void MainFrame_Navigated(object sender, NavigationEventArgs e)
         {
@@ -55,6 +57,7 @@ namespace NotImplementedLab.Windows
             wMessageModal.Message = message;
             wMessageModal.ShowHandlerDialog();
         }
+
 
         /*public System.Windows.Forms.DialogResult ShowModal()
         {            

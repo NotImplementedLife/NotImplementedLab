@@ -23,19 +23,33 @@ namespace NotImplementedLab.Pages
     {
         public ShowcasePage()
         {
-            InitializeComponent();
-            Items.Add(new ShowcaseListItem("Maths", ""));
-            Items.Add(new ShowcaseListItem("Physics", ""));
-            Items.Add(new ShowcaseListItem("Astrology", ""));
-            Items.Add(new ShowcaseListItem("Computer Science", ""));
-            Items.Add(new ShowcaseListItem("Computer Science", ""));
-            Items.Add(new ShowcaseListItem("Computer Science", ""));
-            Items.Add(new ShowcaseListItem("Computer Science", ""));
-            Items.Add(new ShowcaseListItem("Computer Science", ""));
-            Items.Add(new ShowcaseListItem("Computer Science", ""));
+            InitializeComponent();            
             List.ItemsSource = Items;
         }
 
-        public List<ShowcaseListItem> Items = new List<ShowcaseListItem>();      
+        public List<ShowcaseListItem> Items = new List<ShowcaseListItem>();
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            Owner.MainFrame.Navigate(Owner.FieldSelectorPage);
+        }
+
+        private void List_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(List.SelectedItems.Count==1)
+            {               
+                int index = List.Items.IndexOf(List.SelectedItems[List.SelectedItems.Count - 1]);
+                var uc = Items[index].UserControl;
+                if (uc == null)
+                {
+                    Owner.RaiseError("Could not load activity.");
+                }
+                else
+                {
+                    (Owner.ActivityPage as ActivityPage).UIObject = uc;
+                    Owner.MainFrame.Navigate(Owner.ActivityPage);
+                }                
+            }
+        }
     }
 }

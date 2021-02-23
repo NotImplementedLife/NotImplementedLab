@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using NotImplementedLab.Data;
 
 namespace NotImplementedLab.Pages
 {
@@ -25,9 +26,31 @@ namespace NotImplementedLab.Pages
             InitializeComponent();
         }
 
-        private void FieldPresenterButton_Click(object s)
+        private void MtFieldPresenterButton_Click(object s)
         {
-            Owner.MessageModal("Hell yeah!!!");
+            var sp = Owner.ShowcasePage as ShowcasePage;
+            sp.Items.Clear();
+            sp.Items.AddRange(ShowcaseIcons.MathsItems);
+            sp.List.Items.Refresh();
+            Owner.MainFrame.Navigate(Owner.ShowcasePage);
+        }
+
+        private void PhFieldPresenterButton_Click(object s)
+        {
+            var sp = Owner.ShowcasePage as ShowcasePage;
+            sp.Items.Clear();
+            sp.Items.AddRange(ShowcaseIcons.PhysicsItems);
+            sp.List.Items.Refresh();
+            Owner.MainFrame.Navigate(Owner.ShowcasePage);
+        }
+
+        private void CsFieldPresenterButton_Click(object s)
+        {
+            var sp = Owner.ShowcasePage as ShowcasePage;
+            sp.Items.Clear();
+            sp.Items.AddRange(ShowcaseIcons.CSItems);
+            sp.List.Items.Refresh();
+            Owner.MainFrame.Navigate(Owner.ShowcasePage);
         }
     }
 }

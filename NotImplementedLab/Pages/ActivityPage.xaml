@@ -1,0 +1,22 @@
+﻿<local:_Page x:Class="NotImplementedLab.Pages.ActivityPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:NotImplementedLab.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ActivityPage" Background="White">
+    <Grid Margin="25">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" HorizontalAlignment="Left">
+            <Hyperlink Click="BackButton_Click">
+                <Run>Back</Run>
+            </Hyperlink>
+        </TextBlock>
+        <Border Grid.Row="1" Name="UIObjectControl"/>
+    </Grid>
+</local:_Page>

@@ -76,6 +76,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\ActivityPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\FieldSelectorPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -108,7 +112,11 @@
       <DependentUpon>ShowcaseItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Data\ShowcaseDisplayPathData.cs" />
+    <Compile Include="Data\ShowcaseIcons.cs" />
     <Compile Include="Data\ShowcaseListItem.cs" />
+    <Compile Include="Pages\ActivityPage.xaml.cs">
+      <DependentUpon>ActivityPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\FieldSelectorPage.xaml.cs">
       <DependentUpon>FieldSelectorPage.xaml</DependentUpon>
     </Compile>

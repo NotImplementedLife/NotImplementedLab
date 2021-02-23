@@ -21,9 +21,9 @@
                     <Setter Property="Margin" Value="15 7 15 13"/>
                 </Style>
             </UniformGrid.Resources>
-            <controls:FieldPresenterButton FieldName="Mathematics" Click="FieldPresenterButton_Click"/>
-            <controls:FieldPresenterButton FieldName="Physics"/>
-            <controls:FieldPresenterButton/>
+            <controls:FieldPresenterButton FieldName="Mathematics" Click="MtFieldPresenterButton_Click"/>
+            <controls:FieldPresenterButton FieldName="Physics" Click="PhFieldPresenterButton_Click"/>
+            <controls:FieldPresenterButton FieldName="Computer Science" Click="CsFieldPresenterButton_Click"/>
             <controls:FieldPresenterButton/>
         </UniformGrid>
     </Grid>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace NotImplementedLab.Controls
     /// <summary>
     /// Interaction logic for FieldPresenterButton.xaml
     /// </summary>
+    [DefaultEvent("Click")]
     public partial class FieldPresenterButton : UserControl
     {
         public FieldPresenterButton()
