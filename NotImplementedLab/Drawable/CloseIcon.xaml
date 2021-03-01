@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="NotImplementedLab.Drawable.CloseIcon"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NotImplementedLab.Drawable"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="50" Name="Control">
+    <Viewbox Stretch="Uniform">
+        <Canvas Width="64" Height="64">
+            <Path Stroke="{Binding ElementName=Control,Path=Foreground,Mode=TwoWay}" StrokeThickness="5">
+                <Path.Data>
+                    <GeometryGroup>
+                        <PathGeometry Figures="M1,1L63,63"/>
+                        <PathGeometry Figures="M1,63L63,1"/>
+                    </GeometryGroup>
+                </Path.Data>
+            </Path>
+        </Canvas>
+    </Viewbox>
+</UserControl>

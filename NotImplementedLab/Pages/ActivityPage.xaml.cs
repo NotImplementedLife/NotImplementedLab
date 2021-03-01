@@ -45,5 +45,10 @@ namespace NotImplementedLab.Pages
         {
             Owner.MainFrame.Navigate(Owner.ShowcasePage);
         }
+
+        private void HelpButton_Click(object sender, RoutedEventArgs e)
+        {    
+            Owner.InfoModal();
+        }
     }
 }

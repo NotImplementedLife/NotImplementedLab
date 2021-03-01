@@ -3,8 +3,8 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:NotImplementedLab.Pages"
-      mc:Ignorable="d" 
+      xmlns:local="clr-namespace:NotImplementedLab.Pages" xmlns:drawable="clr-namespace:NotImplementedLab.Drawable"
+             mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ActivityPage" Background="White">
     <Grid Margin="25">
@@ -17,6 +17,15 @@
                 <Run>Back</Run>
             </Hyperlink>
         </TextBlock>
+        <Button Grid.Row="0" Height="18" HorizontalAlignment="Right" Foreground="DarkGray" 
+                BorderThickness="0"
+                Background="Transparent" Cursor="Hand" ToolTip="Help"
+                Name="HelpButton"
+                Click="HelpButton_Click">
+            <Button.Content>
+                <drawable:InfoIcon/>
+            </Button.Content>
+        </Button>
         <Border Grid.Row="1" Name="UIObjectControl"/>
     </Grid>
 </local:_Page>

@@ -36,6 +36,11 @@ namespace NotImplementedLab.Windows
             wMessageModal.SetParent(MainContent);
             wMessageModal.ModalShow += OnModalShow;
             wMessageModal.ModalClose += OnModalClose;
+
+            wInfoModal.Owner = this;
+            wInfoModal.SetParent(MainContent);
+            wInfoModal.ModalShow += OnModalShow;
+            wInfoModal.ModalClose += OnModalClose;
         }
 
         private void OnModalShow(object o, EventArgs e) => GlobalBlurMask.Visibility = Visibility.Visible;                 
@@ -52,17 +57,16 @@ namespace NotImplementedLab.Windows
             MainFrame.RemoveBackEntry();
         }
 
+
+        public void InfoModal()
+        {
+            wInfoModal.ShowHandlerDialog();
+        }
         public void MessageModal(string message)
         {
             wMessageModal.Message = message;
             wMessageModal.ShowHandlerDialog();
         }
-
-
-        /*public System.Windows.Forms.DialogResult ShowModal()
-        {            
-            return Modal.ShowHandlerDialog() ? System.Windows.Forms.DialogResult.OK : System.Windows.Forms.DialogResult.Cancel;
-        }*/
 
         public void RaiseWarning(string message)
         {
@@ -84,7 +88,7 @@ namespace NotImplementedLab.Windows
                 {
                     op -= 0.1;
                     if (op < 0) op = 0;
-                    Dispatcher.Invoke(new Action(() => { warning.Opacity = op; }));
+                    Dispatcher.Invoke(new Action(() => { try { warning.Opacity = op; } catch (Exception) { } }));
                     Thread.Sleep(50);
                 }
                 Dispatcher.Invoke(new Action(() => { PopupPanel.Children.Remove(warning); }));
@@ -107,7 +111,7 @@ namespace NotImplementedLab.Windows
             {
                 Thread.Sleep(5000);
                 double op = 0;
-                Dispatcher.Invoke(new Action(() => { op = error.Opacity; }));
+                Dispatcher.Invoke(new Action(() => { try { op = error.Opacity; } catch (Exception) { } }));
                 while (op > 0)
                 {
                     op -= 0.1;

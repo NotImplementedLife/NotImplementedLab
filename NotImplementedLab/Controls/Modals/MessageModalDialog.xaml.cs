@@ -21,7 +21,7 @@ namespace NotImplementedLab.Controls.Modals
     /// <summary>
     /// Interaction logic for MessageModalDialog.xaml
     /// </summary>
-    public partial class MessageModalDialog : UserControl
+    public partial class MessageModalDialog : ModalDialogBase
     {
         public MessageModalDialog()
         {
@@ -42,67 +42,13 @@ namespace NotImplementedLab.Controls.Modals
          {
              get { return (string)GetValue(MessageProperty); }
              set { SetValue(MessageProperty, value); }
-         }         
+         }
 
-         #endregion
-
-        private bool _hideRequest = false;
-        private bool _result = false;
-        private UIElement _parent;
-
-        public void SetParent(UIElement parent)
-        {
-            _parent = parent;
-        }
-
-        public bool ShowHandlerDialog()
-        {
-            //Message = message;
-            Visibility = Visibility.Visible;
-
-            ModalShow?.Invoke(this, null);            
-            _parent.IsEnabled = false;
-
-            _hideRequest = false;
-            while (!_hideRequest)
-            {
-                // HACK: Stop the thread if the application is about to close
-                if (this.Dispatcher.HasShutdownStarted ||
-                    this.Dispatcher.HasShutdownFinished)
-                {
-                    break;
-                }
-
-                // HACK: Simulate "DoEvents"
-                this.Dispatcher.Invoke(
-                    DispatcherPriority.Background,
-                    new ThreadStart(delegate { }));
-                Thread.Sleep(20);
-            }
-
-            return _result;
-        }
-
-        private void HideHandlerDialog()
-        {
-            _hideRequest = true;
-            ModalClose?.Invoke(this, null);
-            Visibility = Visibility.Collapsed; 
-            _parent.IsEnabled = true;
-        }
-
-        public delegate void OnModalShow(object o, EventArgs e);
-        public event OnModalShow ModalShow;
-
-        public delegate void OnModalClose(object o, EventArgs e);
-        public event OnModalClose ModalClose;       
-
-        public MainWindow Owner;                
+        #endregion
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            _result = true;
-            HideHandlerDialog();
+            Close();
         }
     }
 }

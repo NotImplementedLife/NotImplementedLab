@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NotImplementedLab"        
-        xmlns:modals="clr-namespace:NotImplementedLab.Controls.Modals"
+        xmlns:modals="clr-namespace:NotImplementedLab.Controls.Modals" xmlns:controls="clr-namespace:NotImplementedLab.Controls"
         mc:Ignorable="d"
         Title="Not Implemented Lab" Height="600" Width="1000"
         MinWidth="950" MinHeight="500">
@@ -21,7 +21,8 @@
             <DockPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.ZIndex="0"  Name="MainContent">
                 <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Navigated="MainFrame_Navigated"/>
             </DockPanel>
-            <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.ZIndex="0" Name="GlobalBlurMask" Visibility="Collapsed">
+            <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.ZIndex="0" Name="GlobalBlurMask"
+                  Visibility="Collapsed">
                 <Border Background="#f5f5f5">
                     <Border Opacity="0.7" >
                         <Border.Effect>
@@ -33,13 +34,14 @@
                     </Border>
                 </Border>
                 <Grid>
-                    <Border Grid.Row="1" Grid.Column="1" 
-                            Width="Auto" Height="Auto"
-                            VerticalAlignment="Center" HorizontalAlignment="Center" 
-                            MaxWidth="400" MaxHeight="600" 
+                    <Border Grid.Row="1" Grid.Column="1"                             
+                            VerticalAlignment="Center" HorizontalAlignment="Center"                             
                             CornerRadius="3" Background="White" BorderThickness="1" BorderBrush="Black">
                         <Grid>
-                            <modals:MessageModalDialog x:Name="wMessageModal" Background="Transparent" Visibility="Collapsed"></modals:MessageModalDialog>
+                            <modals:MessageModalDialog x:Name="wMessageModal" Background="Transparent" 
+                                                       Visibility="Collapsed"/>
+                            <modals:InfoModalDialog Width="600" Height="400" x:Name="wInfoModal" Background="Transparent"
+                                                     Visibility="Collapsed"/>
                         </Grid>
                     </Border>
                 </Grid>

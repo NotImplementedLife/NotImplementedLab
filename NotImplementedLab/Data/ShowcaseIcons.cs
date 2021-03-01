@@ -12,7 +12,7 @@ namespace NotImplementedLab.Data
     {
         public static List<ShowcaseListItem> MathsItems = new List<ShowcaseListItem>
         {
-            new ShowcaseListItem("Maths1", "", new FieldPresenterButton { FieldName="Test" }),
+            new ShowcaseListItem("Maths1", "", new Graph()),
             new ShowcaseListItem("Maths2", ""),
             new ShowcaseListItem("Maths3", ""),
         };
