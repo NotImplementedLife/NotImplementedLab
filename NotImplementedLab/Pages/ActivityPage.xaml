@@ -18,8 +18,8 @@
             </Hyperlink>
         </TextBlock>
         <Button Grid.Row="0" Height="18" HorizontalAlignment="Right" Foreground="DarkGray" 
-                BorderThickness="0"
-                Background="Transparent" Cursor="Hand" ToolTip="Help"
+                Style="{DynamicResource ResourceKey=SimpleButtonStyle}"                
+                Background="Transparent" Cursor="Hand" ToolTip="Help"                
                 Name="HelpButton"
                 Click="HelpButton_Click">
             <Button.Content>

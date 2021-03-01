@@ -48,7 +48,14 @@ namespace NotImplementedLab.Pages
 
         private void HelpButton_Click(object sender, RoutedEventArgs e)
         {    
-            Owner.InfoModal();
+            if(Owner.wInfoModal.ScrollContainer.Content==null)
+            {
+                Owner.RaiseError("This activity does not contain a help page.");
+            }
+            else
+            {
+                Owner.InfoModal();
+            }            
         }
     }
 }

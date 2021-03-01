@@ -41,6 +41,8 @@ namespace NotImplementedLab.Windows
             wInfoModal.SetParent(MainContent);
             wInfoModal.ModalShow += OnModalShow;
             wInfoModal.ModalClose += OnModalClose;
+            Plugins.PluginManager.ImportPlugins(@"Plugins\LissajousActivity.dll");
+            Plugins.PluginManager.Populate();
         }
 
         private void OnModalShow(object o, EventArgs e) => GlobalBlurMask.Visibility = Visibility.Visible;                 

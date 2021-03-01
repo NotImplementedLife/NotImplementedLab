@@ -36,11 +36,12 @@
                 <Grid>
                     <Border Grid.Row="1" Grid.Column="1"                             
                             VerticalAlignment="Center" HorizontalAlignment="Center"                             
-                            CornerRadius="3" Background="White" BorderThickness="1" BorderBrush="Black">
+                            CornerRadius="3" Background="White" BorderThickness="1" BorderBrush="Black"
+                            Margin="10">
                         <Grid>
                             <modals:MessageModalDialog x:Name="wMessageModal" Background="Transparent" 
                                                        Visibility="Collapsed"/>
-                            <modals:InfoModalDialog Width="600" Height="400" x:Name="wInfoModal" Background="Transparent"
+                            <modals:InfoModalDialog Width="875" MinHeight="450" x:Name="wInfoModal" Background="Transparent"
                                                      Visibility="Collapsed"/>
                         </Grid>
                     </Border>

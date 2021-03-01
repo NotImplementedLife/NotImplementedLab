@@ -25,9 +25,24 @@ namespace NotImplementedLab.Controls.Modals
             InitializeComponent();
         }
 
+        public static DependencyProperty InfoProperty = DependencyProperty.Register("Info", typeof(FrameworkElement), typeof(InfoModalDialog),
+            new PropertyMetadata(null, InfoPropertyChanged));
+
+        public FrameworkElement Info
+        {
+            get => GetValue(InfoProperty) as FrameworkElement;
+            set => SetValue(InfoProperty, value);
+
+        }
+
+        private static void InfoPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            (d as InfoModalDialog).ScrollContainer.Content = e.NewValue;
+        }
+
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             Close();
-        }
+        }        
     }
 }

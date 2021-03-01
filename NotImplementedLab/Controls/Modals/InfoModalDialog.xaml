@@ -12,14 +12,19 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Button Grid.Row="0" Height="25" HorizontalAlignment="Right" Margin="7"
-                BorderThickness="0"
-                Background="Transparent" Cursor="Hand" ToolTip="Help"
+                Style="{DynamicResource ResourceKey=SimpleButtonStyle}"                
+                Background="Transparent" Cursor="Hand" ToolTip="Close"
                 Name="CloseButton"
                 Click="CloseButton_Click">
             <Button.Content>
                 <drawable:CloseIcon/>
             </Button.Content>
         </Button>
-        <TextBlock Grid.Row="1">Info</TextBlock>
+        <ScrollViewer Grid.Row="1" 
+                      Margin="20 0 20 10"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto"
+                      Name="ScrollContainer">
+            <!--Content to be added programatically-->
+        </ScrollViewer>
     </Grid>
 </local:ModalDialogBase>

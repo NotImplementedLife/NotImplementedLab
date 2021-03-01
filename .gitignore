@@ -1,5 +1,6 @@
 .git/
 .vs/
+LissajousActivity/obj
 NotImplementedLab/bin/
 NotImplementedLab/obj/
 packages/

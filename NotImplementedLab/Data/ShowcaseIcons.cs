@@ -8,27 +8,27 @@ using NotImplementedLab.Controls;
 
 namespace NotImplementedLab.Data
 {
-    public static class ShowcaseIcons
+    internal static class ShowcaseIcons
     {
         public static List<ShowcaseListItem> MathsItems = new List<ShowcaseListItem>
         {
-            new ShowcaseListItem("Maths1", "", new Graph()),
-            new ShowcaseListItem("Maths2", ""),
-            new ShowcaseListItem("Maths3", ""),
+            new ShowcaseListItem("Maths1", "", new Graph(),new Button() { Content="123" }),
+            new ShowcaseListItem("Maths2", "", new Graph()),
+            new ShowcaseListItem("Maths3", "", null),
         };
 
         public static List<ShowcaseListItem> PhysicsItems = new List<ShowcaseListItem>
         {
-            new ShowcaseListItem("Physics1", ""),
-            new ShowcaseListItem("Physics2", ""),
-            new ShowcaseListItem("Physics3", ""),
+            new ShowcaseListItem("Physics1", "", null),
+            new ShowcaseListItem("Physics2", "", null),
+            new ShowcaseListItem("Physics3", "", null),
         };
 
         public static List<ShowcaseListItem> CSItems = new List<ShowcaseListItem>
         {
-            new ShowcaseListItem("CS1", ""),
-            new ShowcaseListItem("CS2", ""),
-            new ShowcaseListItem("CS3", ""),
+            new ShowcaseListItem("CS1", "", null),
+            new ShowcaseListItem("CS2", "", null),
+            new ShowcaseListItem("CS3", "", null),
         };
     }
 }
