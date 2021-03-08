@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using NotImplementedLab.Extensions;
 
 namespace NotImplementedLab.Controls
 {
@@ -19,26 +20,10 @@ namespace NotImplementedLab.Controls
     /// Interaction logic for Graph.xaml
     /// </summary>
     public partial class Graph : UserControl
-    {
-        double f(double x)
-        {
-            return x * x * x - 10 * x;
-        }
+    {     
         public Graph()
         {
-            InitializeComponent();
-            var geometry = new PathGeometry();
-            var figure = new PathFigure();
-            figure.StartPoint = new Point(-225, -f(-5));
-            figure.IsClosed = false;
-                        
-            for (double i = -4.5; i <= 5; i+=0.5)
-            {
-                figure.Segments.Add(new LineSegment(new Point(45 * i, -f(i)), true));
-            }
-            geometry.Figures.Add(figure);
-            Path.Data = geometry;
-
+            InitializeComponent();          
         }
 
         public static DependencyProperty OriginXProperty = DependencyProperty.Register("OriginX", typeof(double), typeof(Graph),
@@ -86,6 +71,21 @@ namespace NotImplementedLab.Controls
         private void RefreshYAxis()
         {
             Canvas.SetLeft(VertAxis, OriginX * 0.01 * Container.ActualWidth);
+        }
+
+        public void Plot(List<Point> points)
+        {
+            var geometry = new PathGeometry();
+            var figure = new PathFigure();
+            figure.StartPoint = points[0];
+            figure.IsClosed = false;
+
+            for (int i = 1; i < points.Count; i += 1) 
+            {
+                figure.Segments.Add(new LineSegment(points[i], true));
+            }
+            geometry.Figures.Add(figure);
+            Path.Data = geometry;            
         }
     }
 }

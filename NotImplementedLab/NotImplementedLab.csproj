@@ -80,6 +80,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\NumberSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\PopupNotification.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -142,6 +146,9 @@
       <DependentUpon>MessageModalDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Modals\ModalDialogBase.cs" />
+    <Compile Include="Controls\NumberSelector.xaml.cs">
+      <DependentUpon>NumberSelector.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\PopupNotification.xaml.cs">
       <DependentUpon>PopupNotification.xaml</DependentUpon>
     </Compile>
@@ -160,6 +167,7 @@
     <Compile Include="Drawable\InfoIcon.xaml.cs">
       <DependentUpon>InfoIcon.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\PointsListExtensions.cs" />
     <Compile Include="Pages\ActivityPage.xaml.cs">
       <DependentUpon>ActivityPage.xaml</DependentUpon>
     </Compile>
