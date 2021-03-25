@@ -134,6 +134,7 @@
     <Compile Include="Controls\FieldPresenterButton.xaml.cs">
       <DependentUpon>FieldPresenterButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\GeometryCanvas.cs" />
     <Compile Include="Controls\Graph.xaml.cs">
       <DependentUpon>Graph.xaml</DependentUpon>
     </Compile>
@@ -158,6 +159,9 @@
     <Compile Include="Controls\ShowcaseItem.xaml.cs">
       <DependentUpon>ShowcaseItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Data\GeometryEntities\Point.cs" />
+    <Compile Include="Data\GeometryEntities\Segment.cs" />
+    <Compile Include="Data\GeometryEntity.cs" />
     <Compile Include="Data\ShowcaseDisplayPathData.cs" />
     <Compile Include="Data\ShowcaseIcons.cs" />
     <Compile Include="Data\ShowcaseListItem.cs" />

@@ -42,6 +42,7 @@ namespace NotImplementedLab.Windows
             wInfoModal.ModalShow += OnModalShow;
             wInfoModal.ModalClose += OnModalClose;
             Plugins.PluginManager.ImportPlugins(@"Plugins\LissajousActivity.dll");
+            Plugins.PluginManager.ImportPlugins(@"Plugins\Geometry.dll");
             Plugins.PluginManager.Populate();
         }
 

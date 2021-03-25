@@ -28,19 +28,19 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Grid.Column="0" Text="A=" HorizontalAlignment="Right"></TextBlock>
-            <controls:NumberSelector Name="InputA" Minimum="0" Maximum="150" Grid.Row="0" Grid.Column="1" Margin="2"
+            <controls:NumberSelector Name="InputA" Minimum="0" Maximum="150" Grid.Row="0" Grid.Column="1" Margin="2 2 2 40"
                                      ValueChanged="InputA_ValueChanged"/>
             <TextBlock Grid.Row="1" Grid.Column="0" Text="B=" HorizontalAlignment="Right"></TextBlock>
-            <controls:NumberSelector Name="InputB" Minimum="0" Maximum="150" Grid.Row="1" Grid.Column="1" Margin="2"
+            <controls:NumberSelector Name="InputB" Minimum="0" Maximum="150" Grid.Row="1" Grid.Column="1" Margin="2 2 2 40"
                                      ValueChanged="InputB_ValueChanged"/>
             <TextBlock Grid.Row="2" Grid.Column="0" Text="α=" HorizontalAlignment="Right"></TextBlock>
-            <controls:NumberSelector Name="Inputa" Minimum="0" Maximum="150" Grid.Row="2" Grid.Column="1" Margin="2"
+            <controls:NumberSelector Name="Inputa" Minimum="0" Maximum="150" Grid.Row="2" Grid.Column="1" Margin="2 2 2 40"
                                      ValueChanged="Inputa_ValueChanged_1"/>
             <TextBlock Grid.Row="3" Grid.Column="0" Text="β=" HorizontalAlignment="Right"></TextBlock>
-            <controls:NumberSelector Name="Inputb" Minimum="0" Maximum="150" Grid.Row="3" Grid.Column="1" Margin="2"
+            <controls:NumberSelector Name="Inputb" Minimum="0" Maximum="150" Grid.Row="3" Grid.Column="1" Margin="2 2 2 40"
                                      ValueChanged="Inputb_ValueChanged_1"/>
             <TextBlock Grid.Row="4" Grid.Column="0" Text="δ=" HorizontalAlignment="Right"></TextBlock>
-            <controls:NumberSelector Name="Inputd" Minimum="0" Maximum="150" Grid.Row="4" Grid.Column="1" Margin="2"
+            <controls:NumberSelector Name="Inputd" Minimum="0" Maximum="150" Grid.Row="4" Grid.Column="1" Margin="2 2 2 40"
                                      ValueChanged="Inputd_ValueChanged"/>
         </Grid>
     </Grid>

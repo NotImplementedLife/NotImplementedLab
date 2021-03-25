@@ -1,5 +1,7 @@
 .git/
 .vs/
+*/bin
+*/obj
 LissajousActivity/obj
 NotImplementedLab/bin/
 NotImplementedLab/obj/

@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.1169
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotImplementedLab", "NotImplementedLab\NotImplementedLab.csproj", "{C476BF1D-4AB2-496E-896A-F5E53DD3A5C1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LissajousActivity", "LissajousActivity\LissajousActivity.csproj", "{C7287A23-64EF-4297-8DE1-0FC43F2110D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geometry", "Geometry\Geometry.csproj", "{5E0A5D5C-514D-468D-9727-D769AF5BFF5C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{C7287A23-64EF-4297-8DE1-0FC43F2110D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7287A23-64EF-4297-8DE1-0FC43F2110D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7287A23-64EF-4297-8DE1-0FC43F2110D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E0A5D5C-514D-468D-9727-D769AF5BFF5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E0A5D5C-514D-468D-9727-D769AF5BFF5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E0A5D5C-514D-468D-9727-D769AF5BFF5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E0A5D5C-514D-468D-9727-D769AF5BFF5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

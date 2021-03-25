@@ -61,7 +61,7 @@ namespace LissajousActivity
 
         void Update()
         {
-            new List<Point>().CreateFromCurve(fX, fY, -10, 10, 0.05).PlotOnGraph(Graph);
+            new List<Point>().CreateFromCurve(fX, fY, -10, 10, 0.01).PlotOnGraph(Graph);
         }
     }
 }
