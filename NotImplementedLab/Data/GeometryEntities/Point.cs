@@ -31,7 +31,7 @@ namespace NotImplementedLab.Data.GeometryEntities
         }
 
         public override void Initialize(GeometryCanvas canvas)
-        {
+        {           
             canvas.Children.Add(_fwe);
             canvas.Children.Add(_lbl);            
         }

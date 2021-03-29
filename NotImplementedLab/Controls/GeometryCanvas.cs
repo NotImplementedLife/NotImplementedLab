@@ -15,7 +15,7 @@ namespace NotImplementedLab.Controls
         public GeometryCanvas() : base()
         {
             Background = Brushes.Snow;
-            Loaded += GeometryCanvas_Loaded;           
+            Loaded += GeometryCanvas_Loaded;            
         }        
 
         public List<GeometryEntity> Entities = new List<GeometryEntity>();
@@ -23,7 +23,11 @@ namespace NotImplementedLab.Controls
         private void GeometryCanvas_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
             for (int i = 0, cnt = Entities.Count; i < cnt; i++)
-                Entities[i].Initialize(this);
+                if (!Entities[i].Initialized)
+                {
+                    Entities[i].Initialize(this);
+                    Entities[i].Initialized = true;
+                }
         }
     }
 }

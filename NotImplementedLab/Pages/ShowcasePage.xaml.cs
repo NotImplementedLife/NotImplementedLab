@@ -36,6 +36,7 @@ namespace NotImplementedLab.Pages
                 }
                 else
                 {
+                    (Owner.ActivityPage as ActivityPage).UIObject = null;
                     (Owner.ActivityPage as ActivityPage).UIObject = uc;
                     Owner.wInfoModal.Info = Items[index].Content;
                     Owner.MainFrame.Navigate(Owner.ActivityPage);

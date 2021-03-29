@@ -6,8 +6,82 @@
              xmlns:local="clr-namespace:Geometry.TriangleSolver"
              xmlns:controls="clr-namespace:NotImplementedLab.Controls;assembly=NotImplementedLab"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="600" d:DesignWidth="800">
     <Grid>
-        <controls:GeometryCanvas Name="Canvas"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Viewbox>
+        <controls:GeometryCanvas Name="Canvas" Grid.Row="0" Width="800" Height="500"/>
+        </Viewbox>
+        <Border Background="White" Grid.Row="1" BorderBrush="Black" BorderThickness="0 1 0 0">
+            <Grid Background="White">
+                <Canvas HorizontalAlignment="Center" Width="300">
+                    <Line X1="165" Y1="15" X2="80" Y2="115" Stroke="LightGray"/>
+                    <Line X1="150" Y1="15" X2="235" Y2="115" Stroke="LightGray"/>
+                    <Line X1="100" Y1="120" X2="235" Y2="120" Stroke="LightGray"/>
+                    
+                    
+                    <Grid Width="70" Canvas.Left="115" Canvas.Top="8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock>A = </TextBlock>
+                        <TextBox Grid.Column="1" Name="InputA"></TextBox>
+                    </Grid>
+
+                    <Grid Width="70" Canvas.Left="40" Canvas.Top="110">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock>B =</TextBlock>
+                        <TextBox Grid.Column="1" Name="InputB"></TextBox>
+                    </Grid>
+
+                    <Grid Width="70" Canvas.Left="190" Canvas.Top="110">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock>C =</TextBlock>
+                        <TextBox Grid.Column="1" Name="InputC"></TextBox>
+                    </Grid>
+
+                    <Grid Width="60" Canvas.Left="125" Canvas.Top="100">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock>a =</TextBlock>
+                        <TextBox Grid.Column="1" Name="Inputa"></TextBox>
+                    </Grid>
+
+                    <Grid Width="60" Canvas.Left="160" Canvas.Top="60">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock>b =</TextBlock>
+                        <TextBox Grid.Column="1" Name="Inputb"></TextBox>
+                    </Grid>
+
+                    <Grid Width="60" Canvas.Left="80" Canvas.Top="60">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock>c =</TextBlock>
+                        <TextBox Grid.Column="1" Name="Inputc"></TextBox>
+                    </Grid>
+                    <Button Name="Compute" Canvas.Top="60" Canvas.Left="330" Padding="3" Content="Compute values"
+                            Click="Compute_Click"/>
+                    <Button Name="Clear" Canvas.Top="90" Canvas.Left="364" Padding="3" Content="Clear"
+                            Click="Clear_Click"/>
+                </Canvas>
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>

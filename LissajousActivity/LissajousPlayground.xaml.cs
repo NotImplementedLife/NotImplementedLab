@@ -10,7 +10,7 @@ namespace LissajousActivity
     /// Interaction logic for LissajousPlayground.xaml
     /// </summary>
     public partial class LissajousPlayground : UserControl
-    {
+    {        
         private double _A = 100, _a = 2, _B = 100, _b = 3, _d = 1;
 
         private void InputA_ValueChanged(object sender)
@@ -50,7 +50,7 @@ namespace LissajousActivity
 
         private double fY(double t)
         {
-            return _B * Math.Cos(_b * t);
+            return _B * Math.Sin(_b * t);
         }
         
         public LissajousPlayground()

@@ -12,5 +12,6 @@ namespace NotImplementedLab.Data
         internal List<GeometryEntity> Dependants = new List<GeometryEntity>();
         public abstract void Initialize(GeometryCanvas canvas);
         public virtual void Update() { }
+        public bool Initialized=false;
     }
 }
