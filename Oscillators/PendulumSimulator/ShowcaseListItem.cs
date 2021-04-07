@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Geometry.TriangleSolver
+namespace Oscillators.PendulumSimulator
 {
     public class ShowcaseListItem : NotImplementedLab.Data.ShowcaseListItem
     {
-        public ShowcaseListItem() : base("Triangle Solver", "", typeof(Playground), new Info()) { }
+        public ShowcaseListItem() : base("Pendulum Simulator", "", typeof(Playground), new Info()) { }
     }
 }

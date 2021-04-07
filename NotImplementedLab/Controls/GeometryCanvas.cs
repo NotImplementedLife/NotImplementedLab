@@ -13,8 +13,7 @@ namespace NotImplementedLab.Controls
     public class GeometryCanvas : Canvas
     {
         public GeometryCanvas() : base()
-        {
-            Background = Brushes.Snow;
+        {            
             Loaded += GeometryCanvas_Loaded;            
         }        
 

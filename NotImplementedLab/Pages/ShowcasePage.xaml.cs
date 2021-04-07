@@ -29,7 +29,7 @@ namespace NotImplementedLab.Pages
             {               
                 int index = List.Items.IndexOf(List.SelectedItems[List.SelectedItems.Count - 1]);
                 List.UnselectAll();
-                var uc = Items[index].UserControl;
+                var uc = Items[index].InstantiateUserControl();
                 if (uc == null)
                 {
                     Owner.RaiseError("Could not load activity.");

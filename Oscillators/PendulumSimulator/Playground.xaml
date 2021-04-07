@@ -1,0 +1,114 @@
+﻿<UserControl x:Class="Oscillators.PendulumSimulator.Playground"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Oscillators.PendulumSimulator"
+             xmlns:controls="clr-namespace:NotImplementedLab.Controls;assembly=NotImplementedLab"
+             xmlns:math="clr-namespace:WpfMath.Controls;assembly=WpfMath"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Viewbox Stretch="Uniform">
+                <Grid>
+                    <Canvas Width="800" Height="600" Background="LightGray" RenderTransformOrigin="400,300" ClipToBounds="True"
+                        MouseDown="Canvas_MouseDown"
+                        MouseMove="Canvas_MouseMove"
+                        MouseUp="Canvas_MouseUp"
+                        MouseLeave="Canvas_MouseLeave">
+                        <Path Stroke="Black">
+                            <Path.Data>
+                                <PathGeometry>
+                                    <PathFigure StartPoint="400,0">
+                                        <LineSegment Point="{Binding ElementName=Body,Path=Center}" />
+                                    </PathFigure>
+                                </PathGeometry>
+                            </Path.Data>
+                        </Path>
+                        <Path Fill="Blue">
+                            <Path.Data>
+                                <EllipseGeometry x:Name="Body" Center="400,300" RadiusX="30" RadiusY="30"/>
+                            </Path.Data>
+                        </Path>
+                    </Canvas>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Background="#22000000" Height="35">
+                        <Image Name="PlayPauseControl" Margin="5 0 0 0" Width="32" Height="32" Source="Drawable/ic_play.png"
+                           MouseUp="PlayPauseControl_MouseUp"/>
+                    </StackPanel>
+                </Grid>
+            </Viewbox>
+            <Viewbox Grid.Row="1">
+                <Canvas Width="800" Height="600" Background="White">
+                    <controls:Graph Background="Transparent" Foreground="Red" x:Name="GraphT" Width="800" Height="600" OriginX="0"/>
+                    <controls:Graph Background="Transparent" Foreground="Green" x:Name="GraphDT" Width="800" Height="600" OriginX="0"/>
+                    <controls:Graph Background="Transparent" Foreground="Blue" x:Name="GraphD2T" Width="800" Height="600" OriginX="0"/>
+                    <!--TextBlock Canvas.Right="0" Margin="7" FontSize="23" Foreground="Blue">Velocity</-->
+                    <Image Source="Drawable/grformulae.png" Canvas.Right="0"/>
+                </Canvas>
+            </Viewbox>
+        </Grid>
+        <Border Grid.Column="1" BorderThickness="1 0 0 0" BorderBrush="Gray">
+            <StackPanel>
+                <Button Name="SwitchControlPanelVisibilityButton" Content="&#xbb;" Width="35" Height="35" Click="SwitchControlPanelVisibilityButton_Click"/>
+            </StackPanel>
+        </Border>
+      
+        <Grid Name="ControlPanel" Grid.Column="2" Width="400">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="300"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Mass =" HorizontalAlignment="Right" Margin="0 7 0 0"></TextBlock>
+            <controls:NumberSelector Name="Inputm" Minimum="0.1" Maximum="50" Grid.Row="0" Grid.Column="1" Margin="2 2 2 40"
+                                     ValueChanged="Inputm_ValueChanged" Value="3"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Wire length =" HorizontalAlignment="Right" Margin="0 7 0 0"></TextBlock>
+            <controls:NumberSelector Name="InputL" Minimum="0.5" Maximum="3.7" Grid.Row="1" Grid.Column="1" Margin="2 2 2 40"
+                                     ValueChanged="InputL_ValueChanged" Value="3"/>
+            
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Damping Ratio =" HorizontalAlignment="Right" Margin="0 7 0 0"></TextBlock>
+            <controls:NumberSelector Name="InputDamp" Minimum="0" Maximum="1" Grid.Row="2" Grid.Column="1" Margin="2 2 2 40"
+                                     ValueChanged="InputDamp_ValueChanged" Value="0.3"/>
+        </Grid>
+    </Grid>
+
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Padding" Value="10,2,10,2"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border CornerRadius="3" Background="{TemplateBinding Background}" Padding="{TemplateBinding  Padding}">
+                            <ContentPresenter 
+                                HorizontalAlignment="Center" VerticalAlignment="Center"
+                                Content="{TemplateBinding Content}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#33000000"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+</UserControl>

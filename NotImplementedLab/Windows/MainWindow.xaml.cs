@@ -3,6 +3,7 @@ using NotImplementedLab.Data;
 using NotImplementedLab.Pages;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -41,8 +42,9 @@ namespace NotImplementedLab.Windows
             wInfoModal.SetParent(MainContent);
             wInfoModal.ModalShow += OnModalShow;
             wInfoModal.ModalClose += OnModalClose;
-            Plugins.PluginManager.ImportPlugins(@"Plugins\LissajousActivity.dll");
-            Plugins.PluginManager.ImportPlugins(@"Plugins\Geometry.dll");
+            string[] dlls = Directory.GetFiles("Plugins", "*.dll");
+            for (int i = 0, cnt = dlls.Length; i < cnt; i++)
+                Plugins.PluginManager.ImportPlugins(dlls[i]);           
             Plugins.PluginManager.Populate();
         }
 

@@ -11,10 +11,14 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" FontSize="26">Select a field</TextBlock>
-        <UniformGrid Grid.Row="1" Columns="2" VerticalAlignment="Center">
+        <TextBlock Grid.Row="0" FontSize="26" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Sitka Banner" Margin="0 15 0 55">
+            <Run Foreground="Red">Not</Run> Implemented Lab</TextBlock>
+        <TextBlock Grid.Row="1" FontSize="18" HorizontalAlignment="Center" Foreground="DarkSlateGray">Available fields</TextBlock>
+        <UniformGrid Grid.Row="2" Columns="2" VerticalAlignment="Center">
             <UniformGrid.Resources>
                 <Style TargetType="{x:Type controls:FieldPresenterButton}">
                     <Setter Property="Height" Value="100"/>
@@ -26,5 +30,6 @@
             <controls:FieldPresenterButton FieldName="Computer Science" Click="CsFieldPresenterButton_Click"/>
             <controls:FieldPresenterButton/>
         </UniformGrid>
+        <Grid Height="70" Grid.Row="3"></Grid>
     </Grid>
 </local:_Page>

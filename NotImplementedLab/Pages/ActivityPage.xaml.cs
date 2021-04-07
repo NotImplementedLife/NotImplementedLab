@@ -43,12 +43,13 @@ namespace NotImplementedLab.Pages
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
+
             Owner.MainFrame.Navigate(Owner.ShowcasePage);
         }
 
         private void HelpButton_Click(object sender, RoutedEventArgs e)
-        {    
-            if(Owner.wInfoModal.ScrollContainer.Content==null)
+        {
+            if (Owner.wInfoModal.ScrollContainer.Content == null) 
             {
                 Owner.RaiseError("This activity does not contain a help page.");
             }

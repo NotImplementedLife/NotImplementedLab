@@ -13,7 +13,7 @@
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
         <Viewbox>
-        <controls:GeometryCanvas Name="Canvas" Grid.Row="0" Width="800" Height="500"/>
+            <controls:GeometryCanvas Name="Canvas" Grid.Row="0" Width="800" Height="500"/>
         </Viewbox>
         <Border Background="White" Grid.Row="1" BorderBrush="Black" BorderThickness="0 1 0 0">
             <Grid Background="White">

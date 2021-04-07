@@ -23,7 +23,8 @@ namespace NotImplementedLab.Controls
     {     
         public Graph()
         {
-            InitializeComponent();          
+            InitializeComponent();
+            Foreground = Brushes.Red;
         }
 
         public static DependencyProperty OriginXProperty = DependencyProperty.Register("OriginX", typeof(double), typeof(Graph),
@@ -87,5 +88,44 @@ namespace NotImplementedLab.Controls
             geometry.Figures.Add(figure);
             Path.Data = geometry;            
         }
+
+        public void Plot(List<double> values, double start, double end)
+        {
+            if (values.Count == 0) return;
+            double step = (end - start) / values.Count;
+            var geometry = new PathGeometry();
+            var figure = new PathFigure();
+            var index = start;
+            figure.StartPoint = new Point(index, values[0]);
+            index += step;
+            figure.IsClosed = false;
+
+            for (int i = 1; i < values.Count; i += 1) 
+            {
+                figure.Segments.Add(new LineSegment(new Point(index,values[i]), true));
+                index += step;
+            }
+            geometry.Figures.Add(figure);
+            Path.Data = geometry;
+        }
+
+        public void PlotStep(List<double> values, double start, double step)
+        {
+            if (values.Count == 0) return;
+            var geometry = new PathGeometry();
+            var figure = new PathFigure();
+            var index = start;
+            figure.StartPoint = new Point(index, values[0]);
+            index += step;
+            figure.IsClosed = false;
+
+            for (int i = 1; i < values.Count; i += 1)
+            {
+                figure.Segments.Add(new LineSegment(new Point(index, values[i]), true));
+                index += step;
+            }
+            geometry.Figures.Add(figure);
+            Path.Data = geometry;
+        }       
     }
 }

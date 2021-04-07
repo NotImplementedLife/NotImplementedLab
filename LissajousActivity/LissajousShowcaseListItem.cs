@@ -4,6 +4,6 @@ namespace LissajousActivity
 {
     public class LissajousShowcaseListItem : ShowcaseListItem
     {
-        public LissajousShowcaseListItem() : base("Lissajous", "", new LissajousPlayground(), new LissajousInfo()) { }
+        public LissajousShowcaseListItem() : base("Lissajous", "", typeof(LissajousPlayground), new LissajousInfo()) { }
     }
 }

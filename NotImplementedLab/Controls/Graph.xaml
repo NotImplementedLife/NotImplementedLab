@@ -7,14 +7,15 @@
              mc:Ignorable="d" 
              Background="White"
              d:DesignHeight="450" d:DesignWidth="800"
-             SizeChanged="UserControl_SizeChanged">
+             SizeChanged="UserControl_SizeChanged"
+             x:Name="Control">
     <Grid ClipToBounds="True" Name="Container">
         <Canvas>
             <local:GraphHorizontalAxis x:Name="HorizAxis"
                 Width="{Binding ElementName=Container,Path=ActualWidth}" Canvas.Top="0"/>
             <local:GraphVerticalAxis  x:Name="VertAxis"
                 Height="{Binding ElementName=Container,Path=ActualHeight}" Canvas.Left="0"/>
-            <Path Name="Path" Stroke="Red" StrokeThickness="1"/>
+            <Path Name="Path" Stroke="{Binding ElementName=Control,Path=Foreground}" StrokeThickness="1"/>
         </Canvas>
     </Grid>
 </UserControl>
