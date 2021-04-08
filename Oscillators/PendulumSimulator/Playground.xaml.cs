@@ -105,10 +105,9 @@ namespace Oscillators.PendulumSimulator
         {
             if (!updateValues) return;
             damp = InputDamp.Value;
-        }        
+        }
 
-        double ddt = 0;
-        double delayer = 0;
+        double ddt = 0;        
 
         List<double> ValTetha = new List<double>();
         List<double> ValDTetha = new List<double>();

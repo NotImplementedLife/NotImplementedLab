@@ -27,6 +27,7 @@ namespace NotImplementedLab.Plugins
                         if (_class.IsSubclassOf(typeof(ShowcaseListItem)))
                         {                            
                             Plugins.Add(new PluginData(asm_name, exports[i].Item2, exports[i].Item1, _class));
+                            //MessageBox.Show(exports[i].Item1);
                         }
                     }
                     catch (TypeLoadException)
@@ -59,7 +60,7 @@ namespace NotImplementedLab.Plugins
                         ShowcaseIcons.PhysicsItems.Add(Plugins[i].Instantiate());
                         break;
                     case "CS" :
-                        ShowcaseIcons.PhysicsItems.Add(Plugins[i].Instantiate());
+                        ShowcaseIcons.CSItems.Add(Plugins[i].Instantiate());
                         break;
                 }              
             }

@@ -32,8 +32,8 @@ namespace NotImplementedLab.Pages
 
         private void CsFieldPresenterButton_Click(object s)
         {
-            Owner.MessageModal("Coming soon");
-            return;
+            //Owner.MessageModal("Coming soon");
+            //return;
             var sp = Owner.ShowcasePage as ShowcasePage;
             sp.Items.Clear();
             sp.Items.AddRange(ShowcaseIcons.CSItems);

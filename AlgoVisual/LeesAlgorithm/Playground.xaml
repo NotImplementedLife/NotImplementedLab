@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="AlgoVisual.LeesAlgorithm.Playground"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AlgoVisual.LeesAlgorithm"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="White"
+             Unloaded="UserControl_Unloaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Viewbox>
+            <Image Name="Image" Width="800" Height="480"
+                   MouseDown="Image_MouseDown"
+                   MouseMove="Image_MouseMove"
+                   MouseUp="Image_MouseUp"
+                   MouseLeave="Image_MouseLeave"/>
+        </Viewbox>
+        <StackPanel Grid.Column="1" Margin="10" VerticalAlignment="Center">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="White"/>
+                    <Setter Property="BorderBrush" Value="DodgerBlue"/>
+                    <Setter Property="BorderThickness" Value="0 0 0 2"/>
+                </Style>
+            </StackPanel.Resources>
+            <Button Name="ActionButton" Width="60" Height="25" BorderBrush="Gray" Click="ActionButton_Click">Barrier</Button>
+            <Button Name="Run" Width="60" Height="25"  Click="Run_Click">Run</Button>
+            <Button Name="Reset" Width="60" Height="25" >Reset</Button>
+
+        </StackPanel>
+    </Grid>
+</UserControl>

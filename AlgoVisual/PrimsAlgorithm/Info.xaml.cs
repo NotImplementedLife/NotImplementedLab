@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace NotImplementedLab.Activities.Physics
+namespace AlgoVisual.PrimsAlgorithm
 {
     /// <summary>
-    /// Interaction logic for LissajousPlotter.xaml
+    /// Interaction logic for Info.xaml
     /// </summary>
-    public partial class LissajousPlotter : UserControl
+    public partial class Info : UserControl
     {
-        public LissajousPlotter()
+        public Info()
         {
             InitializeComponent();
         }
