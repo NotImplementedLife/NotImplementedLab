@@ -205,13 +205,7 @@ namespace AlgoVisual.LeesAlgorithm
 
         Queue<Tuple<int, int>> Q = new Queue<Tuple<int, int>>();
 
-        static int[] dr = { -1, 0, 1, 0 };
-
-        private void Next_Click(object sender, RoutedEventArgs e)
-        {
-            NextStep();
-        }
-
+        static int[] dr = { -1, 0, 1, 0 };      
         static int[] dc = { 0, -1, 0, 1 };
 
         bool Solved = false;
@@ -323,7 +317,7 @@ namespace AlgoVisual.LeesAlgorithm
             }
         }
 
-        bool LeeRunning = false;
+        bool LeeRunning = false;       
 
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
@@ -333,6 +327,10 @@ namespace AlgoVisual.LeesAlgorithm
         void RunLee()
         {
             LeeRunning = true;
+            Dispatcher.Invoke(() =>
+            {
+                ActionButton.IsEnabled = false;                
+            });
             for (int r = 0; r < 18; r++)
                 for (int c = 0; c < 30; c++)
                     if (Data[r, c] != -1)
@@ -344,7 +342,7 @@ namespace AlgoVisual.LeesAlgorithm
             {                
                 NextStep();
                 Dispatcher.Invoke(Render);
-                Thread.Sleep(20);
+                Thread.Sleep(30);
             }
 
             if(Error)
@@ -352,7 +350,22 @@ namespace AlgoVisual.LeesAlgorithm
                 Dispatcher.Invoke(() => (Window.GetWindow(this) as NotImplementedLab.Windows.MainWindow).RaiseError("Could not reach end position"));
             }
             Q.Clear();
+            Dispatcher.Invoke(() =>
+            {
+                ActionButton.IsEnabled = true;
+            });
             LeeRunning = false;
-        }        
+        }
+
+        private void Reset_Click(object sender, RoutedEventArgs e)
+        {
+            IsReady = true;
+            for (int r = 0; r < 18; r++)
+                for (int c = 0; c < 30; c++)                     
+                        Data[r, c] = 0;
+            Render();
+            Q.Clear();
+            Q.Enqueue(new Tuple<int, int>(StartR, StartC));
+        }
     }
 }

@@ -49,8 +49,7 @@ namespace NotImplementedLab.Plugins
             ShowcaseIcons.PhysicsItems.Clear();
             ShowcaseIcons.CSItems.Clear();
             for (int i = 0, cnt = Plugins.Count; i < cnt; i++)
-            {
-                //MessageBox.Show(Plugins[i].ClassName);
+            {               
                 switch(Plugins[i].Field)
                 {
                     case "Maths" :

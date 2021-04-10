@@ -35,7 +35,7 @@
             </ListView.Resources>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <controls:ShowcaseItem Width="150" Height="150" Caption="{Binding Caption}" Margin="2"/>
+                    <controls:ShowcaseItem Width="150" Height="150" Caption="{Binding Caption}" Margin="2" DisplayPathData="{Binding DrawingPath}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
             <ListView.ItemsPanel>

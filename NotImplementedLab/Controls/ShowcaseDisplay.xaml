@@ -7,5 +7,5 @@
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="200"
              Background="White">
-    <Canvas Name="Canvas"/>
+    <Canvas Name="Canvas" ClipToBounds="True"/>
 </UserControl>

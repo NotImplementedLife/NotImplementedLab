@@ -8,16 +8,24 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="FieldSelectorPage" Background="White">
-    <Grid>
+    <Grid VerticalAlignment="Center">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" FontSize="26" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Sitka Banner" Margin="0 15 0 55">
-            <Run Foreground="Red">Not</Run> Implemented Lab</TextBlock>
-        <TextBlock Grid.Row="1" FontSize="18" HorizontalAlignment="Center" Foreground="DarkSlateGray">Available fields</TextBlock>
+        <Grid HorizontalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Image Source="pack://application:,,,/NotImplementedLab;component/Images/title.png" Width="500"/>
+            <Image Name="GithubLink" Source="pack://application:,,,/NotImplementedLab;component/Images/Github-Mark.png" Cursor="Hand"  Width="24" Height="24" Margin="0 23" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top"
+                   MouseDown="GithubLink_MouseDown"
+                   MouseUp="GithubLink_MouseUp"
+                   MouseLeave="GithubLink_MouseLeave"/>
+        </Grid>
         <UniformGrid Grid.Row="2" Columns="2" VerticalAlignment="Center">
             <UniformGrid.Resources>
                 <Style TargetType="{x:Type controls:FieldPresenterButton}">
@@ -25,11 +33,10 @@
                     <Setter Property="Margin" Value="15 7 15 13"/>
                 </Style>
             </UniformGrid.Resources>
-            <controls:FieldPresenterButton FieldName="Mathematics" Click="MtFieldPresenterButton_Click"/>
-            <controls:FieldPresenterButton FieldName="Physics" Click="PhFieldPresenterButton_Click"/>
-            <controls:FieldPresenterButton FieldName="Computer Science" Click="CsFieldPresenterButton_Click"/>
-            <controls:FieldPresenterButton/>
+            <controls:FieldPresenterButton FieldName="Mathematics" FieldImage="pack://application:,,,/NotImplementedLab;component/Images/Fields/maths.png" Click="MtFieldPresenterButton_Click"/>
+            <controls:FieldPresenterButton FieldName="Physics"  FieldImage="pack://application:,,,/NotImplementedLab;component/Images/Fields/physics.jpg" Click="PhFieldPresenterButton_Click"/>
+            <controls:FieldPresenterButton FieldName="Computer Science" FieldImage="pack://application:,,,/NotImplementedLab;component/Images/Fields/cs.jpg" Click="CsFieldPresenterButton_Click"/>
+            <controls:FieldPresenterButton FieldName="..." Click="FieldPresenterButton_Click"/>
         </UniformGrid>
-        <Grid Height="70" Grid.Row="3"></Grid>
     </Grid>
 </local:_Page>

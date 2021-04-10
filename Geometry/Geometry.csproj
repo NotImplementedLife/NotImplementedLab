@@ -47,7 +47,7 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-	<Reference Include="WpfMath, Version=0.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="WpfMath, Version=0.9.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\NotImplementedLab\bin\Debug\WpfMath.dll</HintPath>
       <Private>False</Private>
@@ -68,13 +68,20 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="TriangleSolver\Info.xaml.cs">
-      <DependentUpon>Info.xaml</DependentUpon>
-    </Compile>
     <Compile Include="TriangleSolver\Playground.xaml.cs">
       <DependentUpon>Playground.xaml</DependentUpon>
     </Compile>
     <Compile Include="TriangleSolver\ShowcaseListItem.cs" />
+    <Compile Include="TwoPointsOnSphere\Playground.xaml.cs">
+      <DependentUpon>Playground.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TwoPointsOnSphere\Point3DExtensions.cs" />
+    <Compile Include="TwoPointsOnSphere\Polar.cs" />
+    <Compile Include="TwoPointsOnSphere\RotationInfo.cs" />
+    <Compile Include="TwoPointsOnSphere\Segment.cs" />
+    <Compile Include="TwoPointsOnSphere\ShowcaseListItem.cs" />
+    <Compile Include="TwoPointsOnSphere\Sphere.cs" />
+    <Compile Include="TwoPointsOnSphere\Trajectory.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -91,11 +98,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="TriangleSolver\Info.xaml">
+    <Page Include="TriangleSolver\Playground.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TriangleSolver\Playground.xaml">
+    <Page Include="TwoPointsOnSphere\Playground.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

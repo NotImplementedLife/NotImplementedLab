@@ -111,5 +111,10 @@ namespace AlgoVisual.PrimsAlgorithm
             PrimInstance = new PrimInstance(Data);
             RenderData();
         }
+
+        private void UserControl_Unloaded(object sender, RoutedEventArgs e)
+        {
+            AutoCancelOrder = true;
+        }
     }
 }

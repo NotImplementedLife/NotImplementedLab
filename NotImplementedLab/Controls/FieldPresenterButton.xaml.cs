@@ -36,6 +36,20 @@ namespace NotImplementedLab.Controls
             set => SetValue(FieldNameProperty, value);
         }
 
+        public static DependencyProperty FieldImageProperty = DependencyProperty.Register("FieldImage", typeof(string), typeof(FieldPresenterButton),
+            new PropertyMetadata("pack://application:,,,/NotImplementedLab;component/Images/Fields/template.jpg", FieldImagePropertyChanged));
+
+        public string FieldImage
+        {
+            get => GetValue(FieldImageProperty) as string;
+            set => SetValue(FieldImageProperty, value);
+        }
+
+        private static void FieldImagePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            (d as FieldPresenterButton).Border.Background = new ImageBrush(new BitmapImage(new Uri((string)e.NewValue)));
+        }
+
         private static void FieldNamePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             (d as FieldPresenterButton).FieldNameControl.Text = e.NewValue as string;

@@ -35,7 +35,7 @@
                                        Width="200" Height="200"
                                        Style="{StaticResource ShowcaseDisplayStyle}"
                                        DisplayPathData="Turquoise!Yellow|M 100 100 m -75 0 a 75 75 0 1 0 150 0 a 75 75 0 1 0 -150 0;"/>
-                <Grid Background="#90FFFFFF" Opacity="0">
+                <Grid Background="#AAFFFFFF" Opacity="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="Auto"/>
@@ -46,7 +46,8 @@
                                HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                                TextWrapping="Wrap"
                                TextAlignment="Center"
-                               Padding="8"                                                   
+                               Padding="8"   
+                               FontWeight="Bold"
                                FontSize="18">Caption</TextBlock>
                     <Grid.Style>
                         <Style TargetType="{x:Type Grid}">

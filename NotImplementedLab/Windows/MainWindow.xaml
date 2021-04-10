@@ -19,7 +19,7 @@
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
             <DockPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.ZIndex="0"  Name="MainContent">
-                <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Navigated="MainFrame_Navigated"/>
+                <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Navigated="MainFrame_Navigated" Focusable="False"/>
             </DockPanel>
             <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.ZIndex="0" Name="GlobalBlurMask"
                   Visibility="Collapsed">

@@ -6,7 +6,18 @@
              xmlns:local="clr-namespace:AlgoVisual.PrimsAlgorithm"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+    <TextBlock Margin="13" TextWrapping="Wrap" TextAlignment="Justify">
+        This activity is a particular application of the following (invented) problem:<LineBreak/><LineBreak/>        
+        Let there be a country whose cities are arranged as suggested by an N*M grid. The cities are connected by roads such that there 
+        exists a road only between two adjacent cities on the map. Therefore, a city <Run FontFamily="Consolas">(i,j)</Run> is connected to at most 4 cities: 
+        <Run FontFamily="Consolas">(i-1,j)</Run>, <Run FontFamily="Consolas">(i+1,j)</Run>, <Run FontFamily="Consolas">(i,j-1)</Run>, <Run FontFamily="Consolas">(i,j+1)</Run>.
+        A huge sandstorm hit the country and severly covered all the roads with sand. The authorities calculated the cost for cleaning each road. Their goal is to
+        clean the roads such that there should exist a clean path linking every two cities. They also want to do this at a minimum cost. Find a possible roads 
+        cleaning configurtion.
+        <LineBreak/>
+        <LineBreak/>
+        The solution is to apply <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://en.wikipedia.org/wiki/Prim%27s_algorithm">Prim's algorithm</Hyperlink>
+        on the graph consisting of the N*M cities and the corresponding roads. The activity provides a simulation with visual feedback of the algorithm. Also note
+        that the final set of selected edges forms a delightful connex maze.
+    </TextBlock>
 </UserControl>

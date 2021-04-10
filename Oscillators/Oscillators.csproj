@@ -32,7 +32,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <ItemGroup> 
+  <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -55,9 +55,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActivityHeader.Metadata.cs" />
-    <Compile Include="PendulumSimulator\Info.xaml.cs">
-      <DependentUpon>Info.xaml</DependentUpon>
-    </Compile>
     <Compile Include="PendulumSimulator\Playground.xaml.cs">
       <DependentUpon>Playground.xaml</DependentUpon>
     </Compile>
@@ -91,10 +88,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="PendulumSimulator\Info.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="PendulumSimulator\Playground.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

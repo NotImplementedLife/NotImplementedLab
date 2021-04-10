@@ -35,6 +35,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -209,9 +212,26 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\Fields\maths.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Fields\template.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Fields\physics.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Fields\cs.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\title.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\GitHub-Mark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -11,7 +11,8 @@ namespace ActivityHeader
         public static string PluginName = "Geometry";
         public static List<Tuple<string, string>> Exports = new List<Tuple<string, string>>
         {
-            new Tuple<string,string> ("Maths", "Geometry.TriangleSolver.ShowcaseListItem")
+            new Tuple<string,string> ("Maths", "Geometry.TriangleSolver.ShowcaseListItem"),
+            new Tuple<string,string> ("Maths", "Geometry.TwoPointsOnSphere.ShowcaseListItem"),   
         };
     }
 }

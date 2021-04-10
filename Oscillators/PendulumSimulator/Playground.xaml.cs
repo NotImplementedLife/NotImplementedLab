@@ -117,10 +117,13 @@ namespace Oscillators.PendulumSimulator
         List<Point> PDTetha = new List<Point>();
         List<Point> PD2Tetha = new List<Point>();
 
+        bool running = false;
+
         private void Rendering()
         {
-            var lastRender = DateTime.Now;            
-            while (true) 
+            var lastRender = DateTime.Now;
+            running = true;
+            while (running)  
             {
                 var rtime = DateTime.Now;
                 ddt = (rtime - lastRender).TotalSeconds;
@@ -206,6 +209,12 @@ namespace Oscillators.PendulumSimulator
         }
 
         bool isCanvasPaused = false;
+
+        private void UserControl_Unloaded(object sender, RoutedEventArgs e)
+        {
+            running = false;
+        }
+
         private void Canvas_MouseDown(object sender, MouseButtonEventArgs e)
         {
             isCanvasPaused = true;

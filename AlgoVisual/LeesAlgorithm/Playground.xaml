@@ -29,8 +29,7 @@
             </StackPanel.Resources>
             <Button Name="ActionButton" Width="60" Height="25" BorderBrush="Gray" Click="ActionButton_Click">Barrier</Button>
             <Button Name="Run" Width="60" Height="25"  Click="Run_Click">Run</Button>
-            <Button Name="Reset" Width="60" Height="25" >Reset</Button>
-
+            <Button Name="Reset" Width="60" Height="25" Click="Reset_Click">Reset</Button>
         </StackPanel>
     </Grid>
 </UserControl>

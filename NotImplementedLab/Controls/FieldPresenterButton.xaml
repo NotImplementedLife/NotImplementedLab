@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="150" d:DesignWidth="600" Cursor="Hand">
     <Viewbox>
-        <Border CornerRadius="20" Width="600" Height="150">
+        <Border CornerRadius="20" Width="600" Height="150" Name="Border">
             <Border.Background>
                 <ImageBrush ImageSource="pack://application:,,,/NotImplementedLab;component/Images/Fields/template.jpg"/>
             </Border.Background>
@@ -17,7 +17,11 @@
                        FontFamily="Candara"
                        FontSize="50"                       
                        Margin="15 70 0 0"
-                       Text="[Template]"/>
+                       Text="[Template]">
+                    <TextBlock.Effect>
+                        <DropShadowEffect Direction="0" BlurRadius="10" ShadowDepth="3"/>
+                    </TextBlock.Effect>
+                </TextBlock>
             </Grid>
         </Border>
     </Viewbox>

@@ -6,7 +6,27 @@
              xmlns:local="clr-namespace:AlgoVisual.LeesAlgorithm"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+    <TextBlock TextWrapping="Wrap" Margin="13">
+        This activity is a demonstration of Lee's path finding algorithm using breadth-first search. <LineBreak/>
+        The pseudocode is as follows:<LineBreak/>
+        <LineBreak/>
+        <Run FontFamily="Consolas" Text="  Mark start point with 0"/><LineBreak/>
+        <Run FontFamily="Consolas" Text="  k := 0"/><LineBreak/>
+        <Run FontFamily="Consolas" Text="  Repeat"/><LineBreak/>
+        <Run FontFamily="Consolas" Text="    For each point labeled with k "/><LineBreak/>
+        <Run FontFamily="Consolas" Text="      Mark the unlabeled points with (k+1)"/><LineBreak/>
+        <Run FontFamily="Consolas" Text="    k := k+1"/><LineBreak/>
+        <Run FontFamily="Consolas" Text="  Until (end point reached) or (no more points can be marked)"/><LineBreak/>
+        <LineBreak/>
+        In order to find the shortest path, one must do the traceback of the solution:
+         <LineBreak/>
+         <LineBreak/>
+        <Run FontFamily="Consolas" Text="  P := End point"/><LineBreak/>
+        <Run FontFamily="Consolas" Text="  Solution := [P]"/><LineBreak/>
+         <Run FontFamily="Consolas" Text="  Repeat"/><LineBreak/>                 
+         <Run FontFamily="Consolas" Text="    Q := a neighbor of P with a lower mark"/><LineBreak/>
+         <Run FontFamily="Consolas" Text="    P := Q"/><LineBreak/>
+         <Run FontFamily="Consolas" Text="    Add P to Solution"/><LineBreak/>
+         <Run FontFamily="Consolas" Text="  Until P = Start point"/><LineBreak/>
+    </TextBlock>
 </UserControl>
