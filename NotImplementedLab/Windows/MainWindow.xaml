@@ -38,7 +38,7 @@
                             VerticalAlignment="Center" HorizontalAlignment="Center"                             
                             CornerRadius="3" Background="White" BorderThickness="1" BorderBrush="Black"
                             Margin="10">
-                        <Grid>
+                        <Grid Name="ModalsContainer">
                             <modals:MessageModalDialog x:Name="wMessageModal" Background="Transparent" 
                                                        Visibility="Collapsed"/>
                             <modals:InfoModalDialog Width="875" MinHeight="450" x:Name="wInfoModal" Background="Transparent"

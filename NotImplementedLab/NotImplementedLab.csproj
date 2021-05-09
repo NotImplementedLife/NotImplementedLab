@@ -168,6 +168,8 @@
       <DependentUpon>InfoIcon.xaml</DependentUpon>
     </Compile>
     <Compile Include="Extensions\PointsListExtensions.cs" />
+    <Compile Include="Math\Arithmetics.cs" />
+    <Compile Include="Math\IntMatrix.cs" />
     <Compile Include="Pages\ActivityPage.xaml.cs">
       <DependentUpon>ActivityPage.xaml</DependentUpon>
     </Compile>

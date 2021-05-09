@@ -1,4 +1,5 @@
 ﻿using NotImplementedLab.Controls;
+using NotImplementedLab.Controls.Modals;
 using NotImplementedLab.Data;
 using NotImplementedLab.Pages;
 using System;
@@ -129,6 +130,28 @@ namespace NotImplementedLab.Windows
                 }
                 Dispatcher.Invoke(new Action(() => { PopupPanel.Children.Remove(error); }));
             }));
+        }
+
+        private static MainWindow GetInstance()
+            => Application.Current.MainWindow as MainWindow;
+
+        public static bool ShowModal(ModalDialogBase dialog)
+        {
+            var wnd = GetInstance();
+            wnd.ModalsContainer.Children.Add(dialog);
+            dialog.Owner = wnd;
+            dialog.SetParent(wnd.MainContent);
+            dialog.ModalShow += wnd.OnModalShow;
+            dialog.ModalClose += wnd.OnModalClose;
+            var result = dialog.ShowHandlerDialog();
+
+            dialog.Owner = null;
+            dialog.SetParent(null);
+            dialog.ModalShow -= wnd.OnModalShow;
+            dialog.ModalClose -= wnd.OnModalClose;
+            wnd.ModalsContainer.Children.Remove(dialog);
+
+            return result;
         }
     }
 }
