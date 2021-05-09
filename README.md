@@ -42,7 +42,7 @@ namespace Your.Namespace
 }
 
 ```
- 7. Create a new file named `ActivityHeader.Metadata.cs` and write the following code:
+ 7. At the root of your project create a new file named `ActivityHeader.Metadata.cs` and write the following code:
 ```C#
 using System;
 using System.Collections.Generic;
@@ -80,8 +80,36 @@ namespace ActivityHeader // <-- Note the namespace name. It is important to be d
 ```
 
  9. Now you can work on your Playground control. When you want to build, hit `Ctrl+Shift+B` (Build all) and then `F5` (run NotImplementedLab). Under the
-field you specified in `ShowcaseListItem.cs`, you should find your activity's icon. Hover it to reveal its name. After the building, you'll find a copy
+field you specified in `ShowcaseListItem.cs`, you should find your activity's icon. Hover it to reveal its name. After the building finishes, you'll find a copy
 of "NotImplementedLife.exe" in the `Plugins/` folder. You can safely delete it if you want.
+
+<b>Warning:</b> If you run `Task`s into your `Playground` control, make sure you finish it before the control unloads. Otherwise, the task may keep running and will produce unexpected results/crashes when you want to run a new activity. Check this example:
+
+```C#
+public class Playground : UserControl
+{
+    private bool taskIsRunning = false;
+
+    private void Button_Click() // on a dummy button click
+    {
+        Task.Run(()=>
+        {
+            taskIsRunning=true;
+            while(taskIsRunning)
+            {
+                ... // <- do something here
+            }
+        });
+    }
+
+    private void UserControl_Unloaded(object sender, RoutedEventArgs e) // "unloaded" event handler
+    {
+        taskIsRunning = false; // force the end of the task
+    }
+
+}
+
+```
 
 ### Display Path Data
 
@@ -123,6 +151,6 @@ If your activity makes use of 3rd party libraries, they'll be copied to `Plugins
 
 ## Requirements
 
-- Windows machine with .NET Framework 4.5.2 installed
+- Windows 10 machine with .NET Framework 4.5.2 installed
 - Resolution: 1366 x 768
-- RAM: 4GB
+- RAM: 4GB _(may depend on the type of activity running)_
