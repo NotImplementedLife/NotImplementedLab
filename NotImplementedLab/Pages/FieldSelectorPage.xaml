@@ -38,5 +38,10 @@
             <controls:FieldPresenterButton FieldName="Computer Science" FieldImage="pack://application:,,,/NotImplementedLab;component/Images/Fields/cs.jpg" Click="CsFieldPresenterButton_Click"/>
             <controls:FieldPresenterButton FieldName="..." Click="FieldPresenterButton_Click"/>
         </UniformGrid>
+
+
+        <TextBlock Grid.Row="3" Margin="0 0 0 -8" HorizontalAlignment="Center">
+            <Hyperlink TextDecorations="None" Name="ManagePluginsButton" Click="ManagePluginsButton_Click">Manage plugins</Hyperlink>
+        </TextBlock>
     </Grid>
 </local:_Page>

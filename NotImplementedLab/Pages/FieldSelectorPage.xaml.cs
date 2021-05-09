@@ -1,4 +1,7 @@
-﻿using NotImplementedLab.Data;
+﻿using NotImplementedLab.Controls.Modals;
+using NotImplementedLab.Data;
+using NotImplementedLab.Windows;
+using System.Windows;
 
 namespace NotImplementedLab.Pages
 {
@@ -63,6 +66,11 @@ namespace NotImplementedLab.Pages
         private void GithubLink_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
             msDown = false;
+        }
+
+        private void ManagePluginsButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.ShowModal(new PluginsModalDialog());
         }
     }
 }

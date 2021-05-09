@@ -45,7 +45,8 @@ namespace NotImplementedLab.Windows
             wInfoModal.ModalClose += OnModalClose;
             string[] dlls = Directory.GetFiles("Plugins", "*.dll");
             for (int i = 0, cnt = dlls.Length; i < cnt; i++)
-                Plugins.PluginManager.ImportPlugins(dlls[i]);           
+                Plugins.PluginManager.ImportPlugins(dlls[i]);
+            Plugins.PluginManager.LoadDisabledPluginsList();
             Plugins.PluginManager.Populate();
         }
 

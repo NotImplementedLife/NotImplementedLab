@@ -79,6 +79,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\Modals\PluginsModalDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\NumberSelector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -143,6 +147,9 @@
       <DependentUpon>MessageModalDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Modals\ModalDialogBase.cs" />
+    <Compile Include="Controls\Modals\PluginsModalDialog.xaml.cs">
+      <DependentUpon>PluginsModalDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\NumberSelector.xaml.cs">
       <DependentUpon>NumberSelector.xaml</DependentUpon>
     </Compile>
