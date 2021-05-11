@@ -74,6 +74,8 @@ namespace Domino.Tiling.Solvers
             globalConstraint.Shrink();
             Constraints.Add(globalConstraint);
 
+            Debug.WriteLine($"# Constraints: {Constraints.Count}");
+
             // create matrix
 
             Matrix = new IntMatrix(Constraints.Count, Vars.Count + 1);
@@ -94,7 +96,7 @@ namespace Domino.Tiling.Solvers
             catch(Exception e)
             {
                 System.Windows.MessageBox.Show(e.Message);
-            }
+            }            
 
             /*bool ok = false;
             for (int i = 0; i < Matrix.RowsCount && !ok; i++) 
@@ -151,7 +153,7 @@ namespace Domino.Tiling.Solvers
                 }                
             }
 
-            /*Debug.WriteLine("Free Vars:");
+            Debug.WriteLine("Free Vars:");
             Debug.WriteLine(string.Join(" ", FreeVars.Select(t => t.Id + 1)));
             foreach (var v in ConstrianedVars)
             {
@@ -161,7 +163,7 @@ namespace Domino.Tiling.Solvers
             foreach(var fv in FreeVars)
             {
                 fv.Value = 0;
-            }*/           
+            }          
         }
 
         Random rnd = new Random();
@@ -169,7 +171,8 @@ namespace Domino.Tiling.Solvers
         public void BuildSolution()
         {
             bool ok = true;
-            PartialSol.Clear();           
+            PartialSol.Clear();
+            var countDomis = 0;
 
             var vList = Vars.Select(e => e.Value).ToList();
             for (int i = 0, cnt = vList.Count; i < cnt; i++) 
@@ -181,13 +184,18 @@ namespace Domino.Tiling.Solvers
                 if (vList[i].Value == 1)
                 {
                     PartialSol.Add(vList[i].Domino);
+                    countDomis++;
                 }
                 else if (vList[i].Value != 0 && vList[i].Value != 1) 
                 {
                     ok = false;
                     break;
                 }                               
-            }           
+            }
+            if (countDomis != (Constraints.Count - 1) / 2) 
+            {
+                ok = false;
+            }
             if(ok)
             {
                 IsReady = true;
@@ -197,15 +205,15 @@ namespace Domino.Tiling.Solvers
 
         public override void NextStep()
         {
-            BuildSolution();
-            //Debug.WriteLine(string.Join(" ", FreeVars.Select(v => v.Value)));
+            if (IsReady) return;
+            BuildSolution();            
             int i = FreeVars.Count - 1;
             while (i >= 0 && FreeVars[i].Value == 1) 
             {
                 FreeVars[i].Value = 0;                
                 i--;
-            }
-            if(IsReady)
+            }            
+            if (IsReady)
             {
                 return;
             }
@@ -214,8 +222,8 @@ namespace Domino.Tiling.Solvers
                 FreeVars[i].Value = 1;
             }
             else
-            {
-                IsReady = true;                
+            {                
+                IsReady = true; 
                 return;
             }            
             //IsReady = true;

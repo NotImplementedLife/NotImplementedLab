@@ -10,7 +10,7 @@
              Unloaded="UserControl_Unloaded">
     <Grid>
         <Viewbox>
-            <Grid>
+            <Grid Name="DisplayGrid">
                 <Canvas Name="Board" Width="400" Height="400" Background="Black" 
                         MouseDown="Board_MouseDown">
                     <Rectangle Fill="White" Width="20" Height="20" Stroke="Black" StrokeThickness="2"/>
@@ -52,6 +52,7 @@
             <Button Name="Reset" Width="100" Height="25" Click="Reset_Click">Reset</Button>
             <Button Name="Clear" Width="100" Height="25" Click="Clear_Click">Clear Grid</Button>
             <Button Name="SolverProps" Width="100" Height="25" Click="SolverProps_Click">Solver Properties</Button>
+            <Button Name="SaveBmp" Width="100" Height="25" Click="SaveBmp_Click">Export as Image</Button>
         </StackPanel>
     </Grid>
 </UserControl>

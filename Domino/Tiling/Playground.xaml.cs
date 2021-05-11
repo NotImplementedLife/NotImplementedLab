@@ -1,7 +1,9 @@
-﻿using NotImplementedLab.Math;
+﻿using Microsoft.Win32;
+using NotImplementedLab.Math;
 using NotImplementedLab.Windows;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -61,7 +63,7 @@ namespace Domino.Tiling
 
         void PlaceDominos(List<Domi> Domis)
         {
-            DominoPlace.Children.Clear();
+            DominoPlace.Children.Clear();            
             for (var i = 0; i < Domis.Count; i++) 
             {
                 var r = new Rectangle
@@ -75,7 +77,7 @@ namespace Domino.Tiling
                 Canvas.SetLeft(r, Domis[i].Col * tileSize + 1);
                 Canvas.SetTop(r, Domis[i].Row * tileSize + 1);
                 DominoPlace.Children.Add(r);
-            }
+            }            
         }
 
 
@@ -186,6 +188,38 @@ namespace Domino.Tiling
             DominoPlace.Children.Clear();
             GenerateBoard(int.Parse((GridSizeInput.SelectedItem as ComboBoxItem).Content as string));
             Solver = new Solvers.GausssianSolver(Model);            
+        }
+
+        SaveFileDialog sfd = new SaveFileDialog
+        {
+            Filter = "Portable Network Graphics (*.png)|*.png"
+        };
+
+
+        private void SaveBmp_Click(object sender, RoutedEventArgs e)
+        {
+            if (sfd.ShowDialog() == true)
+            {
+                DisplayGrid.Measure(new Size(400, 400));
+                DisplayGrid.Arrange(new Rect(new Size(400, 400)));
+
+                RenderTargetBitmap bmp = new RenderTargetBitmap(400, 400, 96, 96, PixelFormats.Pbgra32);
+
+                bmp.Render(DisplayGrid);
+
+                var encoder = new PngBitmapEncoder();
+
+                encoder.Frames.Add(BitmapFrame.Create(bmp));
+                try
+                {
+                    using (Stream stream = File.Create(sfd.FileName))
+                        encoder.Save(stream);
+                }
+                catch
+                {
+                    RaiseError("File could not be saved");
+                }
+            }
         }
     }
 }
