@@ -70,19 +70,16 @@ namespace NotImplementedLab.Plugins
                     }
                 }
             }
-            catch { }
-
-            //for (int i = 0, cnt = Plugins.Count; i < cnt; i++)
-              //  MessageBox.Show(Plugins[i].Active.ToString());
+            catch { }            
         }
 
         public static void SaveDisabledPluginsList()
         {
-            using (var w = new StreamWriter(File.OpenWrite("disabled_plugins.dat")))
+            using (var w = new StreamWriter(File.Create("disabled_plugins.dat"))) 
             {
                 for (int i = 0, cnt = Plugins.Count; i < cnt; i++)
                 {
-                    if (!Plugins[i].Active)
+                    if (!Plugins[i].Active) 
                     {
                         w.WriteLine($"{Plugins[i].Field} {Plugins[i].AssemblyName} {Plugins[i].ClassName}");
                     }
