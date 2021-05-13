@@ -66,7 +66,7 @@
     <Compile Include="Tiling\Modals\GaussianSolverPropertiesModal.xaml.cs">
       <DependentUpon>GaussianSolverPropertiesModal.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Tiling\Solvers\GausssianSolver.cs" />
+    <Compile Include="Tiling\Solvers\GaussianSolver.cs" />
     <Compile Include="Tiling\StateTreeNode.cs" />
     <Compile Include="Tiling\Model.cs" />
     <Compile Include="Tiling\Playground.xaml.cs">

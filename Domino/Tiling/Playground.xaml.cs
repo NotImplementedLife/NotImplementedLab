@@ -1,21 +1,14 @@
 ﻿using Microsoft.Win32;
-using NotImplementedLab.Math;
 using NotImplementedLab.Windows;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static NotImplementedLab.Windows.MainWindow;
 
@@ -93,10 +86,22 @@ namespace Domino.Tiling
             }
             Task.Run(() =>
             {
+                if (isRunning)
+                    return;
+                isRunning = true;
+
+                //Dispatcher.Invoke(() => MessageBox.Show(Model.Lee(0, 0).ToString()));
+
+                if(!Model.IsFeasible())
+                {
+                    Dispatcher.Invoke(() => RaiseError("The current configuration cannot be completely covered"));
+                    isRunning = false;
+                    return;
+                }
+
                 Dispatcher.Invoke(() => GridSizeInput.IsEnabled = false);               
                 Solver.Init();                
                 int nn = Model.Dim * Model.Dim / 2;
-                isRunning = true;
                 while (isRunning && !Solver.IsReady) //cp.PartialSol.Count < nn) 
                 {
                     for (int i = 0; i < 10; i++) 
@@ -105,7 +110,11 @@ namespace Domino.Tiling
                     }
                     if (isRunning)
                     {
-                        Dispatcher.Invoke(() => PlaceDominos(Solver.PartialSol));
+                        try
+                        {
+                            Dispatcher.Invoke(() => PlaceDominos(Solver.PartialSol));
+                        }
+                        catch { } // a task was canceled
                     }
                     Thread.Sleep(2);
                 }

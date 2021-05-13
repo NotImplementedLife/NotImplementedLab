@@ -153,6 +153,47 @@ namespace Domino.Tiling.Solvers
                 }                
             }
 
+            //Debug.WriteLine(Matrix.ToString());           
+
+            foreach(var fv in FreeVars)
+            {
+                fv.Value = 0;
+            }
+
+            for (int i = 0, cnt = vList.Count; i < cnt; i++) 
+            {
+                if (!vList[i].IsFree) 
+                {
+                    var e = vList[i].Expr;                    
+                    if(e[0].Value==0) // free term is 0
+                    {
+                        //Debug.WriteLine($"$$$$$$$ {vList[i].ExprString()}");
+                        bool ok = true;
+                        for (int j = 1; j < e.Count && ok; j++)
+                            if (e[j].Coefficient >= 0) 
+                            {
+                                //Debug.WriteLine($"Here {e[j].Value}");
+                                ok = false;
+                            }
+                        if (ok)  // if sum(-xi)=0
+                        {
+                            for (int j = 1; j < e.Count; j++)
+                            {
+                                e[j].Var.IsFixed = true;  // variables are fixed to 0
+                                //Debug.WriteLine($"Fixed {e[j].Var.Id}");
+                            }
+                        }
+                    }                  
+                }
+            }
+
+            var L = new List<Variable>();
+            L.AddRange(FreeVars);           
+            L = L.Where((t) => !t.IsFixed).ToList();
+            FreeVars.Clear();
+            FreeVars.AddRange(L);
+
+            Debug.WriteLine($"_______{FreeVars.Count}");
             Debug.WriteLine("Free Vars:");
             Debug.WriteLine(string.Join(" ", FreeVars.Select(t => t.Id + 1)));
             foreach (var v in ConstrianedVars)
@@ -160,10 +201,6 @@ namespace Domino.Tiling.Solvers
                 //System.Windows.MessageBox.Show(v.ExprString());
                 Debug.WriteLine(v.ExprString());
             }
-            foreach(var fv in FreeVars)
-            {
-                fv.Value = 0;
-            }          
         }
 
         Random rnd = new Random();
@@ -200,32 +237,37 @@ namespace Domino.Tiling.Solvers
             {
                 IsReady = true;
             }
+        }
 
+        private bool vListNext(List<Variable> vars)
+        {
+            int i = vars.Count - 1;
+            while (i >= 0 && vars[i].Value == 1) 
+            {
+                vars[i].Value = 0;
+                i--;
+            }
+            if (i >= 0)
+            {
+                vars[i].Value = 1;
+                return true;
+            }
+            else return false;
         }
 
         public override void NextStep()
         {
             if (IsReady) return;
-            BuildSolution();            
-            int i = FreeVars.Count - 1;
-            while (i >= 0 && FreeVars[i].Value == 1) 
-            {
-                FreeVars[i].Value = 0;                
-                i--;
-            }            
+            BuildSolution();
+            if (!vListNext(FreeVars)) 
+            {                
+                IsReady = true; 
+                return;
+            }
             if (IsReady)
             {
                 return;
             }
-            if (i >= 0) 
-            {
-                FreeVars[i].Value = 1;
-            }
-            else
-            {                
-                IsReady = true; 
-                return;
-            }            
             //IsReady = true;
         }
 
@@ -243,6 +285,7 @@ namespace Domino.Tiling.Solvers
 
             // fields set after gaussian elimination
             public bool IsFree = false;
+            public bool IsFixed = false;
             public List<SumTerm> Expr = null;
             public int Amplifier = 1;
             public int GetExprValue() => Expr.Sum(t => t.Value);            

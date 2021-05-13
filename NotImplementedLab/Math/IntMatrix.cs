@@ -68,7 +68,7 @@ namespace NotImplementedLab.Math
             {
                 if (Data[i, p] == 0) 
                 {
-                    bool ok = false;
+                    //bool ok = false;
                     int r = i, n0 = ColsCount;
 
                     for (int t = i; t < RowsCount; t++) 

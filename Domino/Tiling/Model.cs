@@ -49,6 +49,69 @@ namespace Domino.Tiling
                 new Domi(1,1,Orientation.Vertical),
             };
         }
+
+        bool CheckNumberOfTiles()
+        {
+            int w = 0, b = 0;
+            for (int r = 0; r < Dim; r++)
+                for (int c = 0; c < Dim; c++)
+                    if (!Board[r, c].IsHole)
+                    {
+                        if (Board[r, c].IsWhite)
+                            w++;
+                        else
+                            b++;
+                    }
+            return w == b;
+        }
+
+        public void Lee(int r, int c, ref int b, ref int w)
+        {
+            if (r < 0 || c < 0 || r >= Dim || c >= Dim) return;
+            if (Board[r, c].IsHole) 
+                return;
+            if (Board[r, c].Tag != 0)
+                return;
+            Board[r, c].Tag = 1;
+            if (Board[r, c].IsWhite)
+                w++;
+            else b++;
+            Lee(r - 1, c, ref b, ref w);
+            Lee(r + 1, c, ref b, ref w);
+            Lee(r, c - 1, ref b, ref w);
+            Lee(r, c + 1, ref b, ref w);
+        }
+
+        public bool CheckRegions()
+        {
+            for (int r = 0; r < Dim; r++)
+            {
+                for (int c = 0; c < Dim; c++)
+                    Board[r, c].Tag = 0;
+            }
+
+            int b = 0, w = 0;
+            for (int r = 0; r < Dim; r++)
+            {
+                for (int c = 0; c < Dim; c++)
+                {
+                    if(Board[r,c].Tag==0)
+                    {
+                        b = w = 0;
+                        Lee(r, c, ref b, ref w);
+                        if (b != w)
+                            return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+
+        public bool IsFeasible()
+        {
+            return CheckNumberOfTiles() && CheckRegions();
+        }
         
     }
 
@@ -64,12 +127,12 @@ namespace Domino.Tiling
         }
 
         public int Id { get; }
-        public bool IsHole { get; set; }
+        public bool IsHole { get;  set; }
         public int Row { get; }
         public int Col { get; }
         public bool IsWhite { get; }
 
-        public int Tag = 0;  // may be used as "Visited?"
+        public int Tag { get; set; } = 0;  // may be used as "Visited?"
 
         public List<Tile> Neighbors = new List<Tile>(4); // tile acts like a node
 
