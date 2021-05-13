@@ -151,9 +151,7 @@ namespace Domino.Tiling.Solvers
                         vList[j].Expr.Add(new SumTerm(-Matrix[i, k], vList[k]));
                     }
                 }                
-            }
-
-            //Debug.WriteLine(Matrix.ToString());           
+            }            
 
             foreach(var fv in FreeVars)
             {
@@ -193,10 +191,12 @@ namespace Domino.Tiling.Solvers
             FreeVars.Clear();
             FreeVars.AddRange(L);
 
+            //Debug.WriteLine(Matrix.ToString());           
+
             Debug.WriteLine($"_______{FreeVars.Count}");
             Debug.WriteLine("Free Vars:");
             Debug.WriteLine(string.Join(" ", FreeVars.Select(t => t.Id + 1)));
-            foreach (var v in ConstrianedVars)
+            foreach (var v in ConstrianedVars) 
             {
                 //System.Windows.MessageBox.Show(v.ExprString());
                 Debug.WriteLine(v.ExprString());
