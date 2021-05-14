@@ -43,11 +43,28 @@ namespace NotImplementedLab.Windows
             wInfoModal.SetParent(MainContent);
             wInfoModal.ModalShow += OnModalShow;
             wInfoModal.ModalClose += OnModalClose;
+
+#if !IS_SEALED
             string[] dlls = Directory.GetFiles("Plugins", "*.dll");
             for (int i = 0, cnt = dlls.Length; i < cnt; i++)
                 Plugins.PluginManager.ImportPlugins(dlls[i]);
             Plugins.PluginManager.LoadDisabledPluginsList();
             Plugins.PluginManager.Populate();
+#else
+            if (File.Exists("activity.dll"))
+            {
+                Plugins.PluginManager.ImportPlugins("activity.dll");
+                Plugins.PluginManager.LoadDisabledPluginsList();
+                Plugins.PluginManager.SealedPopulate();
+
+                var sp = ShowcasePage as ShowcasePage;
+                sp.Items.Clear();
+                sp.Items.AddRange(ShowcaseIcons.SealedItems);
+                sp.List.Items.Refresh();
+                MainFrame.Navigate(ShowcasePage);
+            }
+            else Close();
+#endif
         }
 
         private void OnModalShow(object o, EventArgs e) => GlobalBlurMask.Visibility = Visibility.Visible;                 

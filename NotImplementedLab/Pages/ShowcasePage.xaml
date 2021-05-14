@@ -13,7 +13,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" HorizontalAlignment="Left">
+        <TextBlock Grid.Row="0" HorizontalAlignment="Left" Name="BackButton">
             <Hyperlink Click="BackButton_Click">
                 <Run>Back</Run>
             </Hyperlink>

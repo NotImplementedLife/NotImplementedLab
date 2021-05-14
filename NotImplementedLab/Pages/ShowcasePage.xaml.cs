@@ -14,6 +14,9 @@ namespace NotImplementedLab.Pages
         {
             InitializeComponent();            
             List.ItemsSource = Items;
+#if IS_SEALED
+            BackButton.Visibility = Visibility.Collapsed;
+#endif
         }
 
         public List<ShowcaseListItem> Items = new List<ShowcaseListItem>();

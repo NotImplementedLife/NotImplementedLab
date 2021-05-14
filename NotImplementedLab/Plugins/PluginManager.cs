@@ -113,5 +113,17 @@ namespace NotImplementedLab.Plugins
                 }
             }
         }
+
+        public static void SealedPopulate()
+        {
+            ShowcaseIcons.SealedItems.Clear();
+            for (int i = 0, cnt = Plugins.Count; i < cnt; i++)
+            {
+                if (Plugins[i].Active)
+                {
+                    ShowcaseIcons.SealedItems.Add(Plugins[i].Instantiate());
+                }
+            }
+        }
     }
 }

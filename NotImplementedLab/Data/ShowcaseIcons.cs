@@ -13,5 +13,6 @@ namespace NotImplementedLab.Data
         public static List<ShowcaseListItem> MathsItems = new List<ShowcaseListItem>();
         public static List<ShowcaseListItem> PhysicsItems = new List<ShowcaseListItem>();
         public static List<ShowcaseListItem> CSItems = new List<ShowcaseListItem>();        
+        public static List<ShowcaseListItem> SealedItems = new List<ShowcaseListItem>();      
     }
 }
