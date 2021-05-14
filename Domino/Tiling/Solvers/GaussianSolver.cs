@@ -136,8 +136,7 @@ namespace Domino.Tiling.Solvers
                 int j = 0;
                 while (j<Matrix.ColsCount-1 && Matrix[i, j] == 0) j++;
                 if (j == Matrix.ColsCount - 1)
-                    continue;                               
-                //Debug.WriteLine($"{i} {j}");
+                    continue;                                              
                 ConstrianedVars.Add(vList[j]);
                 vList[j].Expr = new List<SumTerm>();
                 vList[j].Amplifier = Matrix[i, j];                
@@ -196,12 +195,24 @@ namespace Domino.Tiling.Solvers
             Debug.WriteLine($"_______{FreeVars.Count}");
             Debug.WriteLine("Free Vars:");
             Debug.WriteLine(string.Join(" ", FreeVars.Select(t => t.Id + 1)));
+
+            Groups.Clear();
             foreach (var v in ConstrianedVars) 
             {
                 //System.Windows.MessageBox.Show(v.ExprString());
                 Debug.WriteLine(v.ExprString());
+                var group = new VarsGroup(v);
+                Groups.Add(group);                
+            }
+
+            Debug.WriteLine("\nGROUPED VARS\n");
+            foreach(var g in Groups)
+            {
+                Debug.WriteLine(string.Join(", ", g.Vars.Select(v => v.Id)));
             }
         }
+
+        List<VarsGroup> Groups = new List<VarsGroup>();
 
         Random rnd = new Random();
 
@@ -237,39 +248,94 @@ namespace Domino.Tiling.Solvers
             {
                 IsReady = true;
             }
+        }     
+
+        public void NextStep_BacktrackFreeVars()
+        {
+            if (!VarsListNext(FreeVars))
+            {
+                IsReady = true;                
+            }
         }
 
-        private bool vListNext(List<Variable> vars)
+        int groupIndex = 0;
+        public void NextStep_BacktrackGroups()
         {
-            int i = vars.Count - 1;
-            while (i >= 0 && vars[i].Value == 1) 
+            if(groupIndex>=Groups.Count)
             {
-                vars[i].Value = 0;
-                i--;
+                IsReady = true;
+                return;
             }
-            if (i >= 0)
+            bool found = true;
+            while (found)  
             {
-                vars[i].Value = 1;
-                return true;
+                if (Groups[groupIndex].Vars.Count == 0) 
+                {
+                    if (Groups[groupIndex].IsGood()) 
+                    {
+                        groupIndex++;
+                        break;
+                    }
+                    else
+                    {
+                        while(groupIndex>=0 && !Groups[groupIndex].CanNext())
+                        {
+                            groupIndex--;
+                        }
+                        if (groupIndex < 0) 
+                        {
+                            IsReady = true;                            
+                        }
+                        return;
+                    }
+                }
+                else
+                {
+                    found = Groups[groupIndex].NextValue();
+                    if (!found)
+                    {
+                        if (groupIndex == 0)
+                        {
+                            IsReady = true;
+                            return;
+                        }
+                        else
+                        {
+                            groupIndex--;
+                            return;
+                        }
+                    }
+                    if (Groups[groupIndex].IsGood())
+                    {
+                        groupIndex++;
+                        break;
+                    }
+                }
             }
-            else return false;
+
+            Debug.WriteLine(string.Join(" | ", Groups.Select(g => string.Join(", ", g.Vars.Select(v => v.Value)))));            
         }
 
         public override void NextStep()
         {
             if (IsReady) return;
             BuildSolution();
-            if (!vListNext(FreeVars)) 
-            {                
-                IsReady = true; 
-                return;
-            }
             if (IsReady)
             {
                 return;
             }
-            //IsReady = true;
+
+            NextStep_BacktrackFreeVars();
+            //NextStep_BacktrackGroups();
+
+            if (IsReady)
+            {
+                return;
+            }            
         }
+
+
+
 
         public class Variable
         {
@@ -286,6 +352,9 @@ namespace Domino.Tiling.Solvers
             // fields set after gaussian elimination
             public bool IsFree = false;
             public bool IsFixed = false;
+
+            public bool IsGrouped = false;
+
             public List<SumTerm> Expr = null;
             public int Amplifier = 1;
             public int GetExprValue() => Expr.Sum(t => t.Value);            
@@ -333,6 +402,78 @@ namespace Domino.Tiling.Solvers
                 }
                 var acf = Math.Abs(Coefficient);
                 return $"{(Math.Sign(Coefficient) >= 0 ? "+" : "-")}{(acf == 1 ? "" : acf.ToString())}{"x" + (Var.Id + 1).ToString()}";
+            }
+        }
+
+        public class VarsGroup
+        {
+            public VarsGroup(Variable constrainedVar)
+            {
+                ConstrainedVar = constrainedVar;
+                var e = constrainedVar.Expr;
+                for (int i = 1, cnt = e.Count; i < cnt; i++)
+                {
+                    if (!(e[i].Var.IsGrouped || e[i].Var.IsFixed))
+                    {
+                        Vars.Add(e[i].Var);
+                        e[i].Var.IsGrouped = true;
+                    }
+                }
+
+            }
+            public Variable ConstrainedVar;
+            public List<Variable> Vars = new List<Variable>();
+
+            public bool NextValue()            
+                => VarsListNext(Vars);             
+
+            public void Init()
+            {
+                for (int i = 0, cnt = Vars.Count; i < cnt; i++)
+                {
+                    Vars[i].Value = 0;
+                }
+            }            
+
+            public bool IsGood()
+            {
+                var v = ConstrainedVar.GetExprValue();
+                if (v == 0 || v == 1)
+                {
+                    ConstrainedVar.Value = v;
+                    return true;
+                }
+                return false;
+            }
+
+            public bool CanNext()
+            {
+                for (int i = 0, cnt = Vars.Count; i < cnt; i++)
+                    if (Vars[i].Value == 0)
+                        return true;
+                return false;
+            }
+
+        }
+
+        // step binary backtracking vars values in lexicographic order
+        // returns false if input(v1,v2,...,vn)==(1,1,...,1)
+        private static bool VarsListNext(List<Variable> vars)
+        {
+            int i = vars.Count - 1;
+            while (i >= 0 && vars[i].Value == 1)
+            {
+                vars[i].Value = 0;
+                i--;
+            }
+            if (i >= 0)
+            {
+                vars[i].Value = 1;
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }
